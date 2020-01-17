@@ -4,6 +4,7 @@ from .lib.parser import Parser
 
 @click.command()
 @click.argument('message')
-def cli(message):
-    click.echo('demo 1234 ')
+@click.option('-c', 'config_path', default='./', help='Path to the configuration file (.yml)')
+def cli(message, config_path):
+    click.echo(config_path)
     Parser(message)
