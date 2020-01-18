@@ -30,6 +30,7 @@ setup(
     url='https://gitlab.com/slashplus-build/comlipy/',
     install_requires=[
         'Click',
+        'pyyaml'
     ],
     py_modules=['comlipy'],
     packages=find_packages(),
