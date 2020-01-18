@@ -1,61 +1,104 @@
 import os
 import yaml
 
+
 class Config:
+    CONFIG_FILE_NAME = 'config-comlipy.yml'
 
-    def __init__(self):
-        pass
+    def __init__(self, config_file_path=None):
+        self._custom_config_file_path = config_file_path
+        self._config = self.__load()
 
-    def find_configs(self, state, configs):
-        run_path = os.path.realpath(state.run_path)
-        found_configs = []
-        for config in configs:
-            config_path = os.path.join(run_path, os.path.expanduser(config))
-            if os.path.exists(config_path):
-                found_configs.append({
-                    'config': config,
-                    'path': config_path,
-                })
-        # if not found_configs:
-        #     raise B5ExecutionError('No config found, tried %s inside %s' % (', '.join(configs), run_path))
-        return found_configs
+    def __load(self):
+        """
+        Load all configuration files.
 
+        Returns:
+            dict: configuration dict
+        """
+        config = self.__load_default()
+        custom_config = self.__load_custom()
 
-    def merge_config(self, cur_config, new_config):
-        result_config = cur_config.copy()
-        for key, value in new_config.items():
-            if isinstance(value, dict):
-                cur_value = cur_config.get(key, {})
-                if isinstance(cur_value, dict):
-                    result_config[key] = merge_config(cur_value, value)
-                else:
-                    result_config[key] = value
-            elif isinstance(value, list):
-                result_config[key] = value
-            elif isinstance(value, (str, bytes, bool, int, float)):
-                result_config[key] = value
-            elif value is None:
-                result_config[key] = value
-            else:
-                raise B5ExecutionError('Unknown type for config export %s' % type(value))
-        return result_config
+        if custom_config is not None:
+            config = self.__merge(config, custom_config)
 
-
-    def validate_config(self, config):
-        if 'version' in config:
-            ensure_config_version(config['version'])
         return config
 
+    def __merge(self, dict_default, dict_merge, add_keys=True):
+        """
+        Recursive merge two dicts.
+        Inspired by :meth:``dict.update()`` but instead of updating only top-level keys,
+        `__merge` recurses down into dicts nested to an arbitrary depth, updating keys.
+        The `dict_merge` is merged into `dict_default`.
 
-    def load_config(self, state):
-        configfiles = state.configfiles
-        config = {}
-        for configfile in configfiles:
-            file_handle = open(configfile['path'], 'r')
-            file_config = yaml.safe_load(file_handle)
-            if not isinstance(file_config, dict):
-                file_config = {}
-            config = merge_config(config, file_config)
+        This version will return a copy of the dictionary and leave the original
+        arguments untouched.
 
-        validate_config(config)
+        The optional argument `add_keys`, determines whether keys which are
+        present in `dict_merge` but not `dict_default` should be included in the
+        new dict.
+
+        Args:
+            dict_default (dict) onto which the merge is executed
+            dict_merge (dict): dct merged into dct
+            add_keys (bool): whether to add new keys
+
+        Returns:
+            dict: updated dict
+        """
+        dict_return = dict_default.copy()
+        if add_keys is False:
+            dict_merge = {key: dict_merge[key] for key in set(dict_return).intersection(set(dict_merge))}
+
+        dict_return.update({
+            key: self.__merge(dict_return[key], dict_merge[key], add_keys=add_keys)
+            if isinstance(dict_return.get(key), dict) and isinstance(dict_merge[key], dict)
+            else dict_merge[key]
+            for key in dict_merge.keys()
+        })
+        return dict_return
+
+    def __load_default(self):
+        """
+        Load the default configuration file.
+        """
+        base_config_path = "{}/../../".format(os.path.dirname(__file__))
+        default_config_file = os.path.join(base_config_path, self.CONFIG_FILE_NAME)
+
+        return self.__load_file(default_config_file)
+
+    def __load_custom(self):
+        """
+        Load the custom configuration file if it has bee passed.
+        """
+        if self._custom_config_file_path is not None:
+            try:
+                return self.__load_file(self._custom_config_file_path)
+            except FileNotFoundError:
+                print('Config file with filepath {} could not be found.'.format(self._custom_config_file_path))
+
+    def __load_file(self, config_path):
+        """
+        Load a yaml configuration file into a dict.
+        """
+        with open(config_path) as f:
+            return yaml.load(f, Loader=yaml.FullLoader)
+
+    def get_setting(self, key: str):
+        """
+        Get a specific configuration setting by splitting the `key` taking `_` as delimiter character.
+
+        Returns:
+            str: the configuration setting
+        """
+        setting_keys = key.split('_')
+
+        config = self._config
+        for setting_key in setting_keys:
+            try:
+                config = config[setting_key]
+            except KeyError:
+                print('Configuration setting with key `{}` could not be found. (Assumed cause: `{}`) '.format(key, setting_key))
+                exit(1)
+
         return config
