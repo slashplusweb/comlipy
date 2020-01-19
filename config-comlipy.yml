@@ -1,0 +1,169 @@
+global:
+  debug: 0
+  help: "Help: https://gitlab.de/slashplus"
+  problem_counter: 1
+rules:
+  body-case:
+    applicable: always
+    value:
+    level: 0
+
+  body-empty:
+    applicable: always
+    value:
+    level: 0
+
+  #  body-leading-blank:
+  #    applicable: always
+  #    value:
+  #    level: 0
+
+  body-max-length:
+    applicable: always
+    value: Infinity
+    level: 0
+
+  body-max-line-length:
+    applicable: always
+    value: Infinity
+    level: 0
+
+  body-min-length:
+    applicable: always
+    value: 0
+    level: 0
+
+  footer-empty:
+    applicable: always
+    value:
+    level: 0
+
+  footer-leading-blank:
+    applicable: always
+    value:
+    level: 0
+
+  footer-max-length:
+    applicable: always
+    value: Infinity
+    level: 0
+
+  footer-max-line-length:
+    applicable: always
+    value: Infinity
+    level: 0
+
+  footer-min-length:
+    applicable: always
+    value: 0
+    level: 0
+
+  header-case:
+    applicable: always
+    value: 'lowerCase'
+    level: 0
+
+  header-full-stop:
+    applicable: always
+    value: '.'
+    level: 0
+
+  header-max-length:
+    applicable: always
+    value: 72
+    level: 0
+
+  header-min-length:
+    applicable: always
+    value: 0
+    level: 0
+
+  index:
+    applicable: always
+    value:
+    level: 0
+
+  references-empty:
+    applicable: always
+    value:
+    level: 0
+
+  scope-case:
+    applicable: always
+    value: 'lower-case'
+    level: 0
+
+  scope-empty:
+    applicable: always
+    value:
+    level: 0
+
+  scope-enum:
+    applicable: always
+    value: []
+    level: 0
+
+  scope-max-length:
+    applicable: always
+    value:
+    level: 0
+
+  scope-min-length:
+    applicable: always
+    value:
+    level: 0
+
+  signed-off-by:
+    applicable: always
+    value:
+    level: 0
+
+  subject-case:
+    applicable: always
+    value:
+    level: 0
+
+  subject-empty:
+    applicable: always
+    value:
+    level: 0
+
+  subject-full-stop:
+    applicable: always
+    value:
+    level: 0
+
+  subject-max-length:
+    applicable: always
+    value:
+    level: 0
+
+  subject-min-length:
+    applicable: always
+    value:
+    level: 0
+
+  type-case:
+    applicable: always
+    value:
+    level: 0
+
+  type-empty:
+    applicable: always
+    value:
+    level: 0
+
+  type-enum:
+    applicable: always
+    value:
+    level: 0
+
+  type-max-length:
+    applicable: always
+    value:
+    level: 0
+
+  type-min-length:
+    applicable: always
+    value:
+    level: 0
