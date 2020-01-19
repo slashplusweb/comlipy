@@ -1,5 +1,3 @@
-import re
-
 
 class Parser:
 
@@ -8,10 +6,6 @@ class Parser:
         self._type = self.__parse_type()
         self._scope = self.__parse_scope()
         self._subject = self.__parse_subject()
-        print('message is {}'.format(message))
-        print('type is {}'.format(self._type))
-        print('scope is {}'.format(self._scope))
-        print('subject is {}'.format(self._subject))
 
     def __has_scope(self):
         return self.__get_scope_positions() != -1
@@ -23,7 +17,7 @@ class Parser:
                 # make sure the closing brace is not before opening brace
                 close_brace_index = self._message.find('):', open_brace_index)
 
-                if open_brace_index != -1 and close_brace_index != -1 and close_brace_index-open_brace_index > 1:
+                if open_brace_index != -1 and close_brace_index != -1 and close_brace_index - open_brace_index > 1:
                     self._scope_positions = (open_brace_index, close_brace_index)
 
             return self._scope_positions
@@ -48,13 +42,16 @@ class Parser:
             return self._message[open_brace_index + 1:close_brace_index]
 
     def __parse_subject(self):
-        ''' try returning the string that occures after the colon or None if its an error or the index is out of bounds'''
+        '''
+        try returning the string that occures after the colon
+        or None if its an error or the index is out of bounds
+        '''
         if self.__has_scope():
             _, close_brace_index = self.__get_scope_positions()
             colon_index = close_brace_index + 1
         else:
             colon_index = self._message.find(':')
-        return self._message[colon_index + 1:] if colon_index > 0 and len(self._message) - 1 > colon_index else None
+        return self._message[colon_index + 1:] if 0 < colon_index < len(self._message) - 1 else None
 
     @property
     def type(self):
