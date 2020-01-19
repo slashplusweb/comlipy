@@ -124,13 +124,13 @@ rules:
     level: 0
 
   subject-empty:
-    applicable: always
+    applicable: never
     value:
     level: 0
 
   subject-full-stop:
     applicable: always
-    value:
+    value: '.'
     level: 0
 
   subject-max-length:
