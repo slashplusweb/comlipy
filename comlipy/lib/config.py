@@ -7,22 +7,59 @@ class Config:
 
     def __init__(self, config_file_path=None):
         self._custom_config_file_path = config_file_path
-        self._config = self.__load()
 
-    def __load(self):
+    def get_config(self):
+        if not hasattr(self, '_config'):
+            custom_config = self.__load_custom()
+            config_default = self.get_config_default()
+
+            self._config = self.__merge(config_default, custom_config) if custom_config is not None else config_default
+
+        return self._config
+
+    def get_config_default(self):
+        if not hasattr(self, '_default_config'):
+            self._default_config = self.__load_default()
+
+        return self._default_config
+
+    def get_setting(self, key: str):
         """
-        Load all configuration files.
+        Get a specific configuration setting by splitting the `key` taking `_` as delimiter character.
 
         Returns:
-            dict: configuration dict
+            str: the configuration setting
         """
-        config = self.__load_default()
-        custom_config = self.__load_custom()
+        setting_keys = key.split('_')
 
-        if custom_config is not None:
-            config = self.__merge(config, custom_config)
+        config = self.get_config()
+        for setting_key in setting_keys:
+            try:
+                config = config[setting_key]
+            except KeyError:
+                print('Configuration setting with key `{}` could not be found. (Assumed cause: `{}`) '.format(key,
+                                                                                                              setting_key))
 
         return config
+
+    def get_rules_setting(self, key: str):
+        """
+        Get a specific configuration rules setting.
+
+        Returns:
+            list(str): the configuration rules setting (when, value, level)
+        """
+        setting_keys = key.split('_')
+        config = self.get_config()
+
+        try:
+            config = config['rules'][key]
+            when = config['applicable']
+            value = config['value']
+            level = config['level']
+            return when, value, level
+        except KeyError:
+            print('Configuration rule `rules_{}` could not be found.'.format(key))
 
     def __merge(self, dict_default, dict_merge, add_keys=True):
         """
@@ -83,22 +120,3 @@ class Config:
         """
         with open(config_path) as f:
             return yaml.load(f, Loader=yaml.FullLoader)
-
-    def get_setting(self, key: str):
-        """
-        Get a specific configuration setting by splitting the `key` taking `_` as delimiter character.
-
-        Returns:
-            str: the configuration setting
-        """
-        setting_keys = key.split('_')
-
-        config = self._config
-        for setting_key in setting_keys:
-            try:
-                config = config[setting_key]
-            except KeyError:
-                print('Configuration setting with key `{}` could not be found. (Assumed cause: `{}`) '.format(key, setting_key))
-                exit(1)
-
-        return config
