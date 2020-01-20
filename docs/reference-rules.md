@@ -102,14 +102,14 @@ also valid:
 ```
 * **possible values**
 ```yaml
-  - 'lower-case', // default
-  - 'upper-case', // UPPERCASE
-  - 'camel-case', // camelCase
-  - 'kebab-case', // kebab-case
-  - 'pascal-case', // PascalCase
-  - 'sentence-case', // Sentence case
-  - 'snake-case', // snake_case
-  - 'start-case', // Start Case
+  - 'lower-case' # default
+  - 'upper-case' # UPPERCASE
+  - 'camel-case' # camelCase
+  - 'kebab-case' # kebab-case
+  - 'pascal-case' # PascalCase
+  - 'sentence-case' # Sentence case
+  - 'snake-case' # snake_case
+  - 'start-case' # Start Case
 ```
 
 #### header-full-stop
@@ -152,14 +152,14 @@ also valid:
 ```
 * **possible values**
 ```yaml
-  - 'lower-case', // default
-  - 'upper-case', // UPPERCASE
-  - 'camel-case', // camelCase
-  - 'kebab-case', // kebab-case
-  - 'pascal-case', // PascalCase
-  - 'sentence-case', // Sentence case
-  - 'snake-case', // snake_case
-  - 'start-case', // Start Case
+  - 'lower-case' # default
+  - 'upper-case' # UPPERCASE
+  - 'camel-case' # camelCase
+  - 'kebab-case' # kebab-case
+  - 'pascal-case' # PascalCase
+  - 'sentence-case' # Sentence case
+  - 'snake-case' # snake_case
+  - 'start-case' # Start Case
 ```
 
 #### scope-empty
@@ -190,14 +190,14 @@ also valid:
 ```
 * **possible values**
 ```yaml
-  - 'lower-case', // default
-  - 'upper-case', // UPPERCASE
-  - 'camel-case', // camelCase
-  - 'kebab-case', // kebab-case
-  - 'pascal-case', // PascalCase
-  - 'sentence-case', // Sentence case
-  - 'snake-case', // snake_case
-  - 'start-case', // Start Case
+  - 'lower-case' # default
+  - 'upper-case' # UPPERCASE
+  - 'camel-case' # camelCase
+  - 'kebab-case' # kebab-case
+  - 'pascal-case' # PascalCase
+  - 'sentence-case' # Sentence case
+  - 'snake-case' # snake_case
+  - 'start-case' # Start Case
 ```
 
 #### subject-empty
@@ -233,12 +233,12 @@ also valid:
 * **rule**: `always`
 * **value**
 ```yaml
-  - 'feat',
-  - 'fix',
-  - 'docs',
-  - 'style',
-  - 'refactor',
-  - 'test',
+  - 'feat'
+  - 'fix'
+  - 'docs'
+  - 'style'
+  - 'refactor'
+  - 'test'
   - 'revert'
 ```
 
@@ -251,14 +251,14 @@ also valid:
   ```
 * **possible values**
 ```yaml
-  - 'lower-case', // default
-  - 'upper-case', // UPPERCASE
-  - 'camel-case', // camelCase
-  - 'kebab-case', // kebab-case
-  - 'pascal-case', // PascalCase
-  - 'sentence-case', // Sentence case
-  - 'snake-case', // snake_case
-  - 'start-case', // Start Case
+  - 'lower-case' # default
+  - 'upper-case' # UPPERCASE
+  - 'camel-case' # camelCase
+  - 'kebab-case' # kebab-case
+  - 'pascal-case' # PascalCase
+  - 'sentence-case' # Sentence case
+  - 'snake-case' # snake_case
+  - 'start-case' # Start Case
 ```
 
 #### type-empty
