@@ -71,7 +71,7 @@ rules:
   header-max-length:
     applicable: always
     value: 72
-    level: 0
+    level: 1
 
   header-min-length:
     applicable: always
@@ -105,12 +105,12 @@ rules:
 
   scope-max-length:
     applicable: always
-    value:
+    value: Infinity
     level: 0
 
   scope-min-length:
     applicable: always
-    value:
+    value: 0
     level: 0
 
   signed-off-by:
@@ -135,12 +135,12 @@ rules:
 
   subject-max-length:
     applicable: always
-    value:
+    value: Infinity
     level: 0
 
   subject-min-length:
     applicable: always
-    value:
+    value: 0
     level: 0
 
   type-case:
@@ -160,10 +160,10 @@ rules:
 
   type-max-length:
     applicable: always
-    value:
+    value: Infinity
     level: 0
 
   type-min-length:
     applicable: always
-    value:
+    value: 0
     level: 0
