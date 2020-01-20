@@ -63,14 +63,10 @@ rules:
     applicable: always
     value: 0
     level: 0
-  index:
-    applicable: always
-    value:
-    level: 0
-  references-empty:
-    applicable: always
-    value:
-    level: 0
+#  references-empty:
+#    applicable: always
+#    value:
+#    level: 0
   scope-case:
     applicable: always
     value: 'lower-case'
@@ -91,10 +87,10 @@ rules:
     applicable: always
     value: 0
     level: 0
-  signed-off-by:
-    applicable: always
-    value:
-    level: 0
+#  signed-off-by:
+#    applicable: always
+#    value:
+#    level: 0
   subject-case:
     applicable: never
     value:
