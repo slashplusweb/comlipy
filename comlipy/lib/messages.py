@@ -31,6 +31,9 @@ class Messages:
         problem_levels = {1, 2}
         return bool(self._messages.keys() & problem_levels)
 
+    def contains_error(self):
+        return 2 in self._messages.keys()
+
     def print_info(self):
         header = self._parser.header
 
