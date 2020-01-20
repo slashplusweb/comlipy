@@ -68,10 +68,10 @@ class Parser:
 
         if self.__has_scope():
             _, close_brace_index = self.__get_scope_positions()
-            colon_index = close_brace_index + 1
+            colon_index = close_brace_index + 2
         else:
-            colon_index = header.find(':')
-        return header[colon_index + 1:] if 0 < colon_index < len(header) - 1 else None
+            colon_index = header.find(': ')
+        return header[colon_index + 2:] if 0 < colon_index < len(header) - 2 else None
 
     @property
     def header(self):
