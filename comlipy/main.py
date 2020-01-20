@@ -24,3 +24,5 @@ def cli(message, config_file_path):
     validator.validate()
 
     messages.show()
+    if messages.contains_error():
+        exit(1)
