@@ -5,12 +5,12 @@ from .abstract_rule import AbstractRule
 class TypeEmpty(AbstractRule):
 
     def check(self):
-        type = self._parser.type
+        type_string = self._parser.type
 
-        if type is None:
+        if type_string is None:
             return True
 
-        return Ensure.is_empty(type)
+        return Ensure.is_empty(type_string)
 
     def execute(self):
         result = self.check()
