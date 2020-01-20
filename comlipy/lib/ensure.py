@@ -103,3 +103,7 @@ class Ensure:
             return False
 
         return input_string[-1] == last_character
+
+    @staticmethod
+    def is_in_enum(input_string: str, enum: list):
+        return input_string in enum
