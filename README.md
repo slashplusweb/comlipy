@@ -37,6 +37,16 @@ but you can easily change the configuration in order to fit your needs.
 
 See [docs](/docs) for further details.
 
+## Documentation
+Documentation is currently not finished. Following a list of available 
+references:
+
+- [docs](/docs): ALL documents 
+- [rules](/docs/reference-rules.md): Reference of all available rules with
+ configuration values
+- [commit-msg sample hook](/docs/commit-msg.sample): Example git `commit-msg` hook
+- [cli](/docs/reference-cli.md): List of available cli flags
+
 ## Configuration
 It is possible to change the configuration values. This way you are able 
 to change rule behaviour of all rules by providing values 
