@@ -90,10 +90,5 @@ python -m unittest comlipy.tests.ensure
 - [ ] rules
 
 ### Rules:
-- [ ] footer-leading-blank
-- [ ] header-full-stop
 - [ ] references-empty
-- [ ] scope-enum
 - [ ] signed-off-by
-- [ ] subject-full-stop
-- [ ] type-enum
