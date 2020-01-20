@@ -1,9 +1,9 @@
-
 from setuptools import find_packages, setup
 from os import path
 import re
 
 _ABSOLUTE_DOC_LINK = re.compile('\[(?P<text>[^\]]+)\]\((?P<link>docs/[^\)]+)\)')
+
 
 def _absolute_docs_link_replacement(text):
     def _replacement(m):
@@ -14,17 +14,18 @@ def _absolute_docs_link_replacement(text):
 
     return _ABSOLUTE_DOC_LINK.sub(_replacement, text)
 
-# read the contents of our README file
+
+# read the contents of the README file
 package_path = path.abspath(path.dirname(__file__))
 with open(path.join(package_path, 'README.md'), encoding='utf-8') as f:
     long_description = _absolute_docs_link_replacement(f.read())
 
 setup(
     name='comlipy',
-    description='COMmitLInt for PYthon',
+    description='comlipy - git commit linting for python',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    version='1.0.0-dev',
+    version='1.0.0-rc',
     author='slashplus',
     author_email='info@slashplus.de',
     url='https://gitlab.com/slashplus-build/comlipy/',
@@ -33,8 +34,9 @@ setup(
         'pyyaml',
         'termcolor',
     ],
+    license='MIT',
     py_modules=['comlipy'],
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests*']),
     package_data={'': ['config-comlipy.yml']},
     include_package_data=True,
     entry_points='''
@@ -45,7 +47,7 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: MacOS :: MacOS X',
         'Operating System :: Unix',
         'Operating System :: POSIX',
@@ -58,5 +60,4 @@ setup(
         'Topic :: Software Development :: Build Tools',
         'Topic :: System :: Systems Administration',
     ],
-
-    )
+)
