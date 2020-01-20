@@ -1,4 +1,4 @@
-# Comlipy - **Com**mit**li**nt for **Py**thon
+# Comlipy - git commit linting for python
 
 **comlipy** is a little helper that makes it incredibly easy to check whether
 your commit messages follow predefined or custom commit message 
@@ -87,7 +87,7 @@ You can run unit.tests by following the python 3 unittest documentation.
 For example:
 
 ```bash
-python -m unittest comlipy.tests.ensure
+python -m unittest comlipy.tests.ensure_test
 ```
 
 ### Credits
