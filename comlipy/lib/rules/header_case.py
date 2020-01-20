@@ -12,6 +12,9 @@ class HeaderCase(AbstractRule):
         # convert to list if necessary
         value = [self._value] if not isinstance(self._value, list) else self._value
 
+        if self.negated(self._when):
+            return any(isinstance(case, str) and Ensure.is_case(header, case) for case in value)
+
         return all(isinstance(case, str) and Ensure.is_case(header, case) for case in value)
 
     def execute(self):
