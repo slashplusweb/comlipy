@@ -22,15 +22,11 @@ class Validator:
             todo: add return type (probably void)
         '''
         for rule_key in self.__get_rule_keys():
-            try:
-                rule_module = self.__get_rule_class(rule_key)
-                rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
-                result, message = rule.execute()
-                if not result:
-                    self._messages.add_rule_result(message[0], message[1])
-            except ModuleNotFoundError:
-                # todo: remove continue und raise exception
-                continue
+            rule_module = self.__get_rule_class(rule_key)
+            rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
+            result, message = rule.execute()
+            if not result:
+                self._messages.add_rule_result(message[0], message[1])
 
     def __get_rule_keys(self):
         if not hasattr(self, '_rule_keys'):
