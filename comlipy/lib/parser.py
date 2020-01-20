@@ -12,7 +12,6 @@ class Parser:
 
     def __format_message(self):
         split_list = self._message.splitlines()
-        print(split_list)
         header = split_list[0]
         body = split_list[1] if len(split_list) > 1 else None
         footer = split_list[-1] if len(split_list) > 2 else None
