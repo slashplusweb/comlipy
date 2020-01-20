@@ -101,7 +101,7 @@ rules:
       - 'sentence-case'
       - 'start-case'
       - 'pascal-case'
-      - 'upper-case']
+      - 'upper-case'
     level: 2
   subject-empty:
     applicable: never
