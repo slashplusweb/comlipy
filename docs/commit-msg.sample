@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# get the commit message
+function get_commit_msg(){
+    echo $(<"${1:-}")
+}
+
+comlipy "$(get_commit_msg "${1}")"
