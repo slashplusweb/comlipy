@@ -37,9 +37,7 @@ class Config:
             try:
                 config = config[setting_key]
             except KeyError:
-                print('Configuration setting with key `{}` could not be found. (Assumed cause: `{}`) '.format(key,
-                                                                                                              setting_key))
-
+                print('Configuration setting with key `{}` invalid (Assumed cause: `{}`) '.format(key, setting_key))
         return config
 
     def get_rules_setting(self, key: str):
@@ -112,7 +110,8 @@ class Config:
             try:
                 return self.__load_file(self._custom_config_file_path)
             except FileNotFoundError:
-                print('Config file with filepath {} could not be found.'.format(self._custom_config_file_path))
+                print('Config file with filepath {} could not be found'.format(self._custom_config_file_path))
+                exit(1)
 
     def __load_file(self, config_path):
         """
