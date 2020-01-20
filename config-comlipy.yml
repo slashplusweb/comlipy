@@ -14,7 +14,7 @@ rules:
   body-leading-blank:
     applicable: always
     value:
-    level: 0
+    level: 1
   body-max-length:
     applicable: always
     value: Infinity
@@ -34,7 +34,7 @@ rules:
   footer-leading-blank:
     applicable: always
     value:
-    level: 0
+    level: 1
   footer-max-length:
     applicable: always
     value: Infinity
@@ -58,7 +58,7 @@ rules:
   header-max-length:
     applicable: always
     value: 72
-    level: 1
+    level: 2
   header-min-length:
     applicable: always
     value: 0
@@ -74,7 +74,7 @@ rules:
   scope-case:
     applicable: always
     value: 'lower-case'
-    level: 0
+    level: 2
   scope-empty:
     applicable: never
     value:
@@ -96,17 +96,21 @@ rules:
     value:
     level: 0
   subject-case:
-    applicable: always
+    applicable: never
     value:
-    level: 0
+      - 'sentence-case'
+      - 'start-case'
+      - 'pascal-case'
+      - 'upper-case']
+    level: 2
   subject-empty:
     applicable: never
     value:
     level: 2
   subject-full-stop:
-    applicable: always
+    applicable: never
     value: '.'
-    level: 0
+    level: 2
   subject-max-length:
     applicable: always
     value: Infinity
@@ -117,8 +121,8 @@ rules:
     level: 0
   type-case:
     applicable: always
-    value:
-    level: 0
+    value: 'lower-case'
+    level: 2
   type-empty:
     applicable: never
     value:
@@ -126,7 +130,19 @@ rules:
   type-enum:
     applicable: always
     value:
-    level: 0
+      - 'build'
+      - 'chore'
+      - 'ci'
+      - 'docs'
+      - 'feat'
+      - 'fix'
+      - 'improvement'
+      - 'perf'
+      - 'refactor'
+      - 'revert'
+      - 'style'
+      - 'test'
+    level: 2
   type-max-length:
     applicable: always
     value: Infinity
