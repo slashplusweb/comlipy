@@ -45,8 +45,10 @@ class Parser:
 
             return header[:open_brace_index] if open_brace_index > 0 else None
         else:
-            ''' else try returning the string that occures before the colon or None if its an error or an empty str'''
-            colon_index = header.find(':')
+            ''' else try returning the string that occurs before (): or before : or None if its an error or empty str'''
+            empty_brace_index = header.find('():')
+            colon_index = empty_brace_index if empty_brace_index != -1 else header.find(':')
+
             return header[:colon_index] if colon_index > 0 else None
 
     def __parse_scope(self):
