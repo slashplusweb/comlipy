@@ -1,98 +1,98 @@
 global:
   debug: 0
-  help: "Help: https://gitlab.de/slashplus"
+  help: 'Help: https://gitlab.com/slashplus-build/comlipy'
   problem_counter: 1
 rules:
   body-case:
-    applicable: always
+    applicable: 'always'
     value:
     level: 0
   body-empty:
-    applicable: never
+    applicable: 'never'
     value:
     level: 0
   body-leading-blank:
-    applicable: always
+    applicable: 'always'
     value:
     level: 1
   body-max-length:
-    applicable: always
+    applicable: 'always'
     value: Infinity
     level: 0
   body-max-line-length:
-    applicable: always
+    applicable: 'always'
     value: Infinity
     level: 0
   body-min-length:
-    applicable: always
+    applicable: 'always'
     value: 0
     level: 0
   footer-empty:
-    applicable: never
+    applicable: 'never'
     value:
     level: 0
   footer-leading-blank:
-    applicable: always
+    applicable: 'always'
     value:
     level: 1
   footer-max-length:
-    applicable: always
+    applicable: 'always'
     value: Infinity
     level: 0
   footer-max-line-length:
-    applicable: always
+    applicable: 'always'
     value: Infinity
     level: 0
   footer-min-length:
-    applicable: always
+    applicable: 'always'
     value: 0
     level: 0
   header-case:
-    applicable: always
+    applicable: 'always'
     value: 'lowerCase'
     level: 0
   header-full-stop:
-    applicable: always
+    applicable: 'always'
     value: '.'
     level: 0
   header-max-length:
-    applicable: always
+    applicable: 'always'
     value: 72
     level: 2
   header-min-length:
-    applicable: always
+    applicable: 'always'
     value: 0
     level: 0
 #  references-empty:
-#    applicable: always
+#    applicable: 'always'
 #    value:
 #    level: 0
   scope-case:
-    applicable: always
+    applicable: 'always'
     value: 'lower-case'
     level: 2
   scope-empty:
-    applicable: never
+    applicable: 'never'
     value:
     level: 1
   scope-enum:
-    applicable: always
+    applicable: 'always'
     value: []
     level: 0
   scope-max-length:
-    applicable: always
+    applicable: 'always'
     value: Infinity
     level: 0
   scope-min-length:
-    applicable: always
+    applicable: 'always'
     value: 0
     level: 0
 #  signed-off-by:
-#    applicable: always
+#    applicable: 'always'
 #    value:
 #    level: 0
   subject-case:
-    applicable: never
+    applicable: 'never'
     value:
       - 'sentence-case'
       - 'start-case'
@@ -100,31 +100,31 @@ rules:
       - 'upper-case'
     level: 2
   subject-empty:
-    applicable: never
+    applicable: 'never'
     value:
     level: 2
   subject-full-stop:
-    applicable: never
+    applicable: 'never'
     value: '.'
     level: 2
   subject-max-length:
-    applicable: always
+    applicable: 'always'
     value: Infinity
     level: 0
   subject-min-length:
-    applicable: always
+    applicable: 'always'
     value: 0
     level: 0
   type-case:
-    applicable: always
+    applicable: 'always'
     value: 'lower-case'
     level: 2
   type-empty:
-    applicable: never
+    applicable: 'never'
     value:
     level: 2
   type-enum:
-    applicable: always
+    applicable: 'always'
     value:
       - 'build'
       - 'chore'
@@ -140,10 +140,10 @@ rules:
       - 'test'
     level: 2
   type-max-length:
-    applicable: always
+    applicable: 'always'
     value: Infinity
     level: 0
   type-min-length:
-    applicable: always
+    applicable: 'always'
     value: 0
     level: 0

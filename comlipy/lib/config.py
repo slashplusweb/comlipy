@@ -99,7 +99,7 @@ class Config:
         """
         Load the default configuration file.
         """
-        base_config_path = "{}/../../".format(os.path.dirname(__file__))
+        base_config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
         default_config_file = os.path.join(base_config_path, self.CONFIG_FILE_NAME)
 
         return self.__load_file(default_config_file)
