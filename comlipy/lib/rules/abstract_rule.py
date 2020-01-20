@@ -19,3 +19,12 @@ class AbstractRule(abc.ABC):
 
     def negated(self, when: str) -> bool:
         return when == 'never'
+
+    def is_value_int(self):
+        # of course we could check whether the value is of instance int,
+        # but we also want to check whether we could cast it to int or not
+        try:
+            int(self._value)
+        except (TypeError, ValueError) as e:
+            return False
+        return True
