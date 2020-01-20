@@ -43,7 +43,7 @@ class Parser:
             ''' if there is a scope try returning the string that occures before the scope'''
             open_brace_index, _ = self.__get_scope_positions()
 
-            return header[:open_brace_index]
+            return header[:open_brace_index] if open_brace_index > 0 else None
         else:
             ''' else try returning the string that occures before the colon or None if its an error or an empty str'''
             colon_index = header.find(':')
