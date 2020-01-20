@@ -1,5 +1,6 @@
 from re import split
 
+
 class Parser:
 
     def __init__(self, message):
@@ -21,11 +22,13 @@ class Parser:
         return self.__get_scope_positions() != -1
 
     def __get_scope_positions(self):
+        header = self._header
+
         try:
             if not hasattr(self, '_scope_positions'):
-                open_brace_index = self._message.find('(')
+                open_brace_index = header.find('(')
                 # make sure the closing brace is not before opening brace
-                close_brace_index = self._message.find('):', open_brace_index)
+                close_brace_index = header.find('):', open_brace_index)
 
                 if open_brace_index != -1 and close_brace_index != -1 and close_brace_index - open_brace_index > 1:
                     self._scope_positions = (open_brace_index, close_brace_index)
@@ -35,33 +38,39 @@ class Parser:
             return -1
 
     def __parse_type(self):
+        header = self._header
+
         if self.__has_scope():
             ''' if there is a scope try returning the string that occures before the scope'''
             open_brace_index, _ = self.__get_scope_positions()
 
-            return self._message[:open_brace_index]
+            return header[:open_brace_index]
         else:
             ''' else try returning the string that occures before the colon or None if its an error or an empty str'''
-            colon_index = self._message.find(':')
-            return self._message[:colon_index] if colon_index > 0 else None
+            colon_index = header.find(':')
+            return header[:colon_index] if colon_index > 0 else None
 
     def __parse_scope(self):
+        header = self._header
+
         if self.__has_scope():
             open_brace_index, close_brace_index = self.__get_scope_positions()
 
-            return self._message[open_brace_index + 1:close_brace_index]
+            return header[open_brace_index + 1:close_brace_index]
 
     def __parse_subject(self):
         '''
         try returning the string that occures after the colon
         or None if its an error or the index is out of bounds
         '''
+        header = self._header
+
         if self.__has_scope():
             _, close_brace_index = self.__get_scope_positions()
             colon_index = close_brace_index + 1
         else:
-            colon_index = self._message.find(':')
-        return self._message[colon_index + 1:] if 0 < colon_index < len(self._message) - 1 else None
+            colon_index = header.find(':')
+        return header[colon_index + 1:] if 0 < colon_index < len(header) - 1 else None
 
     @property
     def header(self):
