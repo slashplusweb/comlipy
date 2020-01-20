@@ -66,7 +66,6 @@ class Messages:
         print('\n{}    {}'.format(icon, summary))
 
     def __print(self, message, level):
-        color = None
         icon = None
 
         if level == 0:
@@ -81,4 +80,4 @@ class Messages:
         else:
             TypeError('Unknown level `{}`'.format(level))
 
-        print('    '.join(filter(None, [icon, str(message)])), color)
+        print('    '.join(filter(None, [icon, str(message)])))
