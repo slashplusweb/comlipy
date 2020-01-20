@@ -1,11 +1,21 @@
+from re import split
 
 class Parser:
 
     def __init__(self, message):
         self._message = message
+        self._header, self._body, self._footer = self.__format_message()
         self._type = self.__parse_type()
         self._scope = self.__parse_scope()
         self._subject = self.__parse_subject()
+
+    def __format_message(self):
+        split_list = self._message.splitlines()
+        print(split_list)
+        header = split_list[0]
+        body = split_list[1] if len(split_list) > 1 else None
+        footer = split_list[-1] if len(split_list) > 2 else None
+        return header, body, footer
 
     def __has_scope(self):
         return self.__get_scope_positions() != -1
@@ -52,6 +62,18 @@ class Parser:
         else:
             colon_index = self._message.find(':')
         return self._message[colon_index + 1:] if 0 < colon_index < len(self._message) - 1 else None
+
+    @property
+    def header(self):
+        return self._header
+
+    @property
+    def body(self):
+        return self._body
+
+    @property
+    def footer(self):
+        return self._footer
 
     @property
     def type(self):
