@@ -1,5 +1,4 @@
 from re import compile, split
-# from .string import String
 
 
 class Ensure:
@@ -67,7 +66,7 @@ class Ensure:
 
     @staticmethod
     def is_empty(input_string: str) -> bool:
-        return not str(input_string) or len(input_string) <= 0
+        return len(input_string) == 0
 
     @staticmethod
     def is_valid_length_max(input_string: str, length_max: int) -> bool:
@@ -80,3 +79,20 @@ class Ensure:
     @staticmethod
     def is_valid_line_length_max(input_string: str, line_length_max: int) -> bool:
         return all(Ensure.is_valid_length_max(line, line_length_max) for line in split(r'/\r?\n', input_string))
+
+    @staticmethod
+    def is_leading_blank_line(input_string: str) -> bool:
+        '''
+        Checks is the given input_string starts with an blank line.
+        This is considered true if the string is completely empty, contains only whitespace,
+        or if it starts with a line that follows those criteria
+        :param input_string:
+        :return:
+        '''
+        # return true if the complete string is empty
+        if len(input_string) == 0 or input_string.isspace():
+            return True
+
+        # check for line breaks and if there is one, check if its empty
+        split_lines = input_string.splitlines(True)
+        return len(split_lines) > 0 and split_lines[0].isspace()
