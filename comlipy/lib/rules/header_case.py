@@ -7,7 +7,7 @@ class HeaderCase(AbstractRule):
     def check(self):
         header = self._parser.header
         if header is None:
-            return True
+            return True if not self.negated(self._when) else False
 
         # convert to list if necessary
         value = [self._value] if not isinstance(self._value, list) else self._value

@@ -7,7 +7,7 @@ class BodyCase(AbstractRule):
     def check(self):
         body = self._parser.body
         if body is None:
-            return True
+            return True if not self.negated(self._when) else False
 
         # convert to list if necessary
         value = [self._value] if not isinstance(self._value, list) else self._value
