@@ -35,6 +35,8 @@ setup(
     ],
     py_modules=['comlipy'],
     packages=find_packages(),
+    package_data={'': ['config-comlipy.yml']},
+    include_package_data=True,
     entry_points='''
         [console_scripts]
         comlipy=comlipy.main:cli
