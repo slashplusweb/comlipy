@@ -8,7 +8,7 @@ class HeaderFullStop(AbstractRule):
         header = self._parser.header
 
         if header is None or not isinstance(self._value, str):
-            return True
+            return False
 
         return Ensure.is_last_character(header, self._value)
 

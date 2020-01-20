@@ -8,7 +8,7 @@ class SubjectFullStop(AbstractRule):
         subject = self._parser.subject
 
         if subject is None or not isinstance(self._value, str):
-            return True
+            return False
 
         return Ensure.is_last_character(subject, self._value)
 
