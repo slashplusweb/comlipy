@@ -7,7 +7,7 @@ from .config import Config
 class Messages:
     ICON_ERROR = '✖'
     ICON_WARNING = '⚠'
-    ICON_SUCCESS = u"\xE2\x9C\x93"  # check (UTF-8)
+    ICON_SUCCESS = u"\xE2\x9C\x93"  # check (UTF-8) todo: check icon
     ICON_HELP = 'ⓘ'
     ICON_INFO = 'ℹ'
     ICON_HOURGLASS = '⧗'
@@ -30,9 +30,6 @@ class Messages:
     def __is_problem(self):
         problem_levels = {1, 2}
         return bool(self._messages.keys() & problem_levels)
-
-    def contains_error(self):
-        return 2 in self._messages.keys()
 
     def print_info(self):
         header = self._parser.header
