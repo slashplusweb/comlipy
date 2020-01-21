@@ -47,7 +47,6 @@ class Config:
         Returns:
             list(str): the configuration rules setting (when, value, level)
         """
-        setting_keys = key.split('_')
         config = self.get_config()
 
         try:
@@ -55,6 +54,7 @@ class Config:
             when = config['applicable']
             value = config['value']
             level = config['level']
+
             return when, value, level
         except KeyError:
             print('Configuration rule `rules_{}` could not be found.'.format(key))
