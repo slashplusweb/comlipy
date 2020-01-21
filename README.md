@@ -1,8 +1,8 @@
 # Comlipy - git commit linting for python
 
-**comlipy** is a little helper that makes it incredibly easy to check whether
+**comlipy** is a helper that makes it incredibly easy to check whether
 your commit messages follow predefined or custom commit message 
-standards. 
+standards or not. 
 
 This means that after setting up `comlipy` in combination with 
 a custom git `commit-msg` hook ([further information](https://git-scm.com/book/uz/v2/Customizing-Git-Git-Hooks))
