@@ -12,8 +12,8 @@ class BodyMaxLineLength(AbstractRule):
 
         return Ensure.is_valid_line_length_max(body, self._value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
-        message = 'body\'s lines must not be longer than than {} characters'.format(self._value), self._level
+        message = 'body\'s lines must not be longer than than {} characters'.format(self._value)
 
-        return result, message
+        return result, message, self._level

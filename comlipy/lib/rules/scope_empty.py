@@ -12,9 +12,9 @@ class ScopeEmpty(AbstractRule):
 
         return Ensure.is_empty(scope)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'scope {} be empty'.format('may not' if self.negated(self._when) else 'must'), self._level
+        message = 'scope {} be empty'.format('may not' if self.negated(self._when) else 'must')
 
-        return result, message
+        return result, message, self._level

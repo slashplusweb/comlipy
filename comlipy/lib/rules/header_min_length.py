@@ -12,8 +12,8 @@ class HeaderMinLength(AbstractRule):
 
         return Ensure.is_valid_length_min(header, self._value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
-        message = 'header must not be shorter than {} characters'.format(self._value), self._level
+        message = 'header must not be shorter than {} characters'.format(self._value)
 
-        return result, message
+        return result, message, self._level

@@ -12,9 +12,9 @@ class TypeEnum(AbstractRule):
 
         return Ensure.is_in_enum(type_string, self._value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'type {} be one of [{}]'.format('may not' if self.negated(self._when) else 'must', ', '.join(self._value)), self._level
+        message = 'type {} be one of [{}]'.format('may not' if self.negated(self._when) else 'must', ', '.join(self._value))
 
-        return result, message
+        return result, message, self._level

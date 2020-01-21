@@ -12,8 +12,8 @@ class TypeMaxLength(AbstractRule):
 
         return Ensure.is_valid_length_max(type_string, self._value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
-        message = 'type must not be longer than {} characters'.format(self._value), self._level
+        message = 'type must not be longer than {} characters'.format(self._value)
 
-        return result, message
+        return result, message, self._level

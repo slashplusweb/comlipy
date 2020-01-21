@@ -12,9 +12,9 @@ class FooterEmpty(AbstractRule):
 
         return Ensure.is_empty(footer)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'footer {} be empty'.format('may not' if self.negated(self._when) else 'must'), self._level
+        message = 'footer {} be empty'.format('may not' if self.negated(self._when) else 'must')
 
-        return result, message
+        return result, message, self._level

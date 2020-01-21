@@ -17,9 +17,9 @@ class HeaderCase(AbstractRule):
 
         return all(isinstance(case, str) and Ensure.is_case(header, case) for case in value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'header must {}be {}'.format('not ' if self.negated(self._when) else '', self._value), self._level
+        message = 'header must {}be {}'.format('not ' if self.negated(self._when) else '', self._value)
 
-        return result, message
+        return result, message, self._level
