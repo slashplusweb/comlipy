@@ -1,7 +1,7 @@
 # Comlipy - git commit linting for python
 
 <p align="center">
-  <img width="600" src="docs/assets/comlipy.svg">
+  <img width="800" src="docs/assets/comlipy.svg">
 </p>
 
 Demo generated with [svg-term-cli](https://github.com/marionebl/svg-term-cli) 
