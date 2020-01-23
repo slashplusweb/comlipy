@@ -1,5 +1,11 @@
 # Comlipy - git commit linting for python
 
+<p align="center">
+  <img width="600" src="docs/assets/comlipy.svg">
+</p>
+
+Demo generated with [svg-term-cli](https://github.com/marionebl/svg-term-cli) 
+
 **comlipy** is a helper that makes it incredibly easy to check whether
 your commit messages follow predefined or custom commit message 
 standards or not. 
