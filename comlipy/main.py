@@ -28,5 +28,7 @@ def cli(message, config_file_path, is_quiet):
 
     if not is_quiet:
         messages.show()
-    if messages.contains_error():
+    if validator.is_error():
         exit(1)
+
+    exit(0)

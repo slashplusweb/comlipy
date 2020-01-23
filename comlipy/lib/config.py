@@ -38,16 +38,16 @@ class Config:
                 config = config[setting_key]
             except KeyError:
                 print('Configuration setting with key `{}` invalid (Assumed cause: `{}`) '.format(key, setting_key))
+
         return config
 
-    def get_rules_setting(self, key: str):
+    def get_rules_setting(self, key: str) -> list:
         """
         Get a specific configuration rules setting.
 
         Returns:
             list(str): the configuration rules setting (when, value, level)
         """
-        setting_keys = key.split('_')
         config = self.get_config()
 
         try:
@@ -55,11 +55,14 @@ class Config:
             when = config['applicable']
             value = config['value']
             level = config['level']
-            return when, value, level
+
+            return [when, value, level]
         except KeyError:
             print('Configuration rule `rules_{}` could not be found.'.format(key))
 
-    def __merge(self, dict_default, dict_merge, add_keys=True):
+        return []
+
+    def __merge(self, dict_default: dict, dict_merge: dict, add_keys=True) -> dict:
         """
         Recursive merge two dicts.
         Inspired by :meth:``dict.update()`` but instead of updating only top-level keys,
@@ -91,6 +94,7 @@ class Config:
             else dict_merge[key]
             for key in dict_merge.keys()
         })
+
         return dict_return
 
     def __load_default(self):
@@ -112,6 +116,8 @@ class Config:
             except FileNotFoundError:
                 print('Config file with filepath {} could not be found'.format(self._custom_config_file_path))
                 exit(1)
+
+        return None
 
     def __load_file(self, config_path):
         """

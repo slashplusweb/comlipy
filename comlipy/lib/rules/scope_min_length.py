@@ -12,8 +12,8 @@ class ScopeMinLength(AbstractRule):
 
         return Ensure.is_valid_length_min(scope, self._value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
-        message = 'scope must not be shorter than {} characters'.format(self._value), self._level
+        message = 'scope must not be shorter than {} characters'.format(self._value)
 
-        return result, message
+        return result, message, self._level

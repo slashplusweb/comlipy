@@ -10,7 +10,7 @@ class AbstractRule(abc.ABC):
         self._when, self._value, self._level = settings
 
     @abc.abstractmethod
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         pass
 
     @abc.abstractmethod

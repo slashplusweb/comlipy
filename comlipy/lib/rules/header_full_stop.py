@@ -12,9 +12,9 @@ class HeaderFullStop(AbstractRule):
 
         return Ensure.is_last_character(header, self._value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'header {} end with full stop'.format('may not' if self.negated(self._when) else 'must'), self._level
+        message = 'header {} end with full stop'.format('may not' if self.negated(self._when) else 'must')
 
-        return result, message
+        return result, message, self._level

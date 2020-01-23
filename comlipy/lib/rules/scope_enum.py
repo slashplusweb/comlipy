@@ -12,9 +12,9 @@ class ScopeEnum(AbstractRule):
 
         return Ensure.is_in_enum(scope, self._value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'scope {} be one of [{}]'.format('may not' if self.negated(self._when) else 'must', ', '.join(self._value)), self._level
+        message = 'scope {} be one of [{}]'.format('may not' if self.negated(self._when) else 'must', ', '.join(self._value))
 
-        return result, message
+        return result, message, self._level

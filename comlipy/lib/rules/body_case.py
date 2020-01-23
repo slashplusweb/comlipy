@@ -17,9 +17,9 @@ class BodyCase(AbstractRule):
 
         return all(isinstance(case, str) and Ensure.is_case(body, case) for case in value)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'body must {}be {}'.format('not ' if self.negated(self._when) else '', self._value), self._level
+        message = 'body must {}be {}'.format('not ' if self.negated(self._when) else '', self._value)
 
-        return result, message
+        return result, message, self._level

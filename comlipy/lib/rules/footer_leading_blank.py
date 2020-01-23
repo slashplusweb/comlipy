@@ -12,9 +12,9 @@ class FooterLeadingBlank(AbstractRule):
 
         return Ensure.is_leading_blank_line(footer)
 
-    def execute(self):
+    def execute(self) -> (bool, str, int):
         result = self.check()
         result = not result if self.negated(self._when) else result
-        message = 'footer {} have leading blank line'.format('may not' if self.negated(self._when) else 'must'), self._level
+        message = 'footer {} have leading blank line'.format('may not' if self.negated(self._when) else 'must')
 
-        return result, message
+        return result, message, self._level
