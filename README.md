@@ -84,7 +84,7 @@ rules:
   scope-case:
     value: 'upper-case'
   scope-empty:
-    applicable: never
+    applicable: 'never'
     level: 2
 ```
 

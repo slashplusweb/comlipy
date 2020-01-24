@@ -1,16 +1,11 @@
-from ..ensure import Ensure
-from .abstract_rule import AbstractRule
+from ..rule_checker import RuleChecker
+from .abstract_rules import AbstractFooterRule
 
 
-class FooterMinLength(AbstractRule):
+class FooterMinLength(AbstractFooterRule):
 
     def check(self):
-        footer = self._parser.footer
-
-        if footer is None or not self.is_value_int():
-            return True
-
-        return Ensure.is_valid_length_min(footer, self._value)
+        return RuleChecker.is_valid_min_length(self.get_rule_input(), self._value)
 
     def execute(self) -> (bool, str, int):
         result = self.check()

@@ -1,20 +1,15 @@
-from ..ensure import Ensure
-from .abstract_rule import AbstractRule
+from ..rule_checker import RuleChecker
+from .abstract_rules import AbstractTypeRule
 
 
-class TypeEnum(AbstractRule):
+class TypeEnum(AbstractTypeRule):
 
     def check(self):
-        type_string = self._parser.type
-
-        if type_string is None:
-            return True
-
-        return Ensure.is_in_enum(type_string, self._value)
+        return RuleChecker.is_valid_enum(self.get_rule_input(), self._value)
 
     def execute(self) -> (bool, str, int):
         result = self.check()
-        result = not result if self.negated(self._when) else result
-        message = 'type {} be one of [{}]'.format('may not' if self.negated(self._when) else 'must', ', '.join(self._value))
+        result = not result if RuleChecker.is_negated(self._when) else result
+        message = 'type {} be one of [{}]'.format('may not' if RuleChecker.is_negated(self._when) else 'must', ', '.join(self._value))
 
         return result, message, self._level

@@ -9,37 +9,6 @@ class Ensure:
     def __init__(self):
         pass
 
-    # def case(self, raw: str, target: str = 'lowercase') -> bool:
-    #     if target not in self.TARGET_CASE_TYPES:
-    #         raise ValueError('case must be one of {}'.format(self.TARGET_CASE_TYPES))
-    #
-    #     input_string= re.sub('`.*?`|\".*?\"|\'.*?\'').strip()
-    #
-    #     transformed = self.__transform_to_case(input, target)
-
-    # def __transform_to_case(self, input_string: str, case_type: str) -> str:
-    #
-    #     input_string = String(input_string)
-    #
-    #     if case_type == 'camel-case':
-    #         return input_string.to_camel_case()
-    #     elif case_type == 'kebab-case':
-    #         return input_string.to_kebab_case()
-    #     elif case_type == 'snake-case':
-    #         return input_string.to_snake_case()
-    #     elif case_type == 'pascal-case':
-    #         return input_string.to_pascal_case()
-    #     elif case_type == 'start-case':
-    #         return input_string.to_start_case()
-    #     elif case_type in ('upper-case', 'uppercase'):
-    #         return input_string.to_upper_case()
-    #     elif case_type in ('sentence-case', 'sentencecase'):
-    #         return input_string.to_sentence_case()
-    #     elif case_type in ('lower-case', 'lowercase', 'lowerCase'):
-    #         return input_string.to_lower_case()
-    #     else:
-    #         raise TypeError('ensure-case: Unknown target case `{}`'.format(case_type))
-
     @staticmethod
     def is_case(input_string: str, target_case: str) -> bool:
 
@@ -69,19 +38,19 @@ class Ensure:
         return len(input_string) == 0
 
     @staticmethod
-    def is_valid_length_max(input_string: str, length_max: int) -> bool:
+    def length_max(input_string: str, length_max: int) -> bool:
         return len(input_string) <= length_max
 
     @staticmethod
-    def is_valid_length_min(input_string: str, length_min: int) -> bool:
+    def length_min(input_string: str, length_min: int) -> bool:
         return len(input_string) >= length_min
 
     @staticmethod
-    def is_valid_line_length_max(input_string: str, line_length_max: int) -> bool:
-        return all(Ensure.is_valid_length_max(line, line_length_max) for line in split(r'/\r?\n', input_string))
+    def line_length_max(input_string: str, line_length_max: int) -> bool:
+        return all(Ensure.length_max(line, line_length_max) for line in split(r'/\r?\n', input_string))
 
     @staticmethod
-    def is_leading_blank_line(input_string: str) -> bool:
+    def leading_blank_line(input_string: str) -> bool:
         '''
         Checks is the given input_string starts with an blank line.
         This is considered true if the string is completely empty, contains only whitespace,
@@ -107,3 +76,13 @@ class Ensure:
     @staticmethod
     def is_in_enum(input_string: str, enum: list):
         return input_string in enum
+
+    @staticmethod
+    def is_int(value):
+        # of course we could check whether the value is of instance int,
+        # but we also want to check whether we could cast it to int or not
+        try:
+            int(value)
+        except (TypeError, ValueError):
+            return False
+        return True
