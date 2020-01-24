@@ -1,16 +1,11 @@
-from ..ensure import Ensure
-from .abstract_rule import AbstractRule
+from ..rule_checker import RuleChecker
+from .abstract_rules import AbstractTypeRule
 
 
-class TypeMaxLength(AbstractRule):
+class TypeMaxLength(AbstractTypeRule):
 
     def check(self):
-        type_string = self._parser.type
-
-        if type_string is None or not self.is_value_int():
-            return True
-
-        return Ensure.is_valid_length_max(type_string, self._value)
+        return RuleChecker.is_valid_max_length(self.get_rule_input(), self._value)
 
     def execute(self) -> (bool, str, int):
         result = self.check()

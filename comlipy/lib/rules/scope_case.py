@@ -1,25 +1,15 @@
-from ..ensure import Ensure
-from .abstract_rule import AbstractRule
+from ..rule_checker import RuleChecker
+from .abstract_rules import AbstractScopeRule
 
 
-class ScopeCase(AbstractRule):
+class ScopeCase(AbstractScopeRule):
 
     def check(self):
-        scope = self._parser.scope
-        if scope is None:
-            return True if not self.negated(self._when) else False
-
-        # convert to list if necessary
-        value = [self._value] if not isinstance(self._value, list) else self._value
-
-        if self.negated(self._when):
-            return any(isinstance(case, str) and Ensure.is_case(scope, case) for case in value)
-
-        return all(isinstance(case, str) and Ensure.is_case(scope, case) for case in value)
+        return RuleChecker.is_valid_case(self.get_rule_input(), self._when, self._value)
 
     def execute(self) -> (bool, str, int):
         result = self.check()
-        result = not result if self.negated(self._when) else result
-        message = 'scope must {}be {}'.format('not ' if self.negated(self._when) else '', self._value)
+        result = not result if RuleChecker.is_negated(self._when) else result
+        message = 'scope must {}be {}'.format('not ' if RuleChecker.is_negated(self._when) else '', self._value)
 
         return result, message, self._level

@@ -22,14 +22,17 @@ class Validator:
         :return: None
         '''
         for rule_key in self.__get_rule_keys():
-            rule_module = self.__get_rule_class(rule_key)
-            rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
-            result, message, level = rule.execute()
-            if not result:
-                self._messages.add_rule_result(message, level)
+            # if rule_key == 'scope-case':
+                rule_module = self.__get_rule_class(rule_key)
+                rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
+                result, message, level = rule.execute()
+                if not result:
+                    self._messages.add_rule_result(message, level)
 
-                if int(level) == 2:
-                    self._is_error = True
+                    if int(level) == 2:
+                        self._is_error = True
+            # else:
+            #     continue
 
     def is_error(self) -> bool:
         '''
