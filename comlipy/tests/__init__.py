@@ -1,9 +1,9 @@
 import unittest
 
-from .ensure_test import EnsureTest
+from .lib.test_ensure import TestEnsure
 
 
 def suite():
-    test_suite = unittest.TestLoader().loadTestsFromTestCase(EnsureTest)
+    test_suite = unittest.TestLoader().loadTestsFromTestCase(TestEnsure)
 
     return test_suite
