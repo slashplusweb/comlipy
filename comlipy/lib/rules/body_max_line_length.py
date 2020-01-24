@@ -1,16 +1,11 @@
-from ..ensure import Ensure
-from .abstract_rule import AbstractRule
+from ..rule_checker import RuleChecker
+from .abstract_rules import AbstractBodyRule
 
 
-class BodyMaxLineLength(AbstractRule):
+class BodyMaxLineLength(AbstractBodyRule):
 
     def check(self):
-        body = self._parser.body
-
-        if body is None or not self.is_value_int():
-            return True
-
-        return Ensure.is_valid_line_length_max(body, self._value)
+        return RuleChecker.is_valid_max_line_length(self.get_rule_input(), self._value)
 
     def execute(self) -> (bool, str, int):
         result = self.check()

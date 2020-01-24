@@ -1,20 +1,15 @@
-from ..ensure import Ensure
-from .abstract_rule import AbstractRule
+from ..rule_checker import RuleChecker
+from .abstract_rules import AbstractTypeRule
 
 
-class TypeEmpty(AbstractRule):
+class TypeEmpty(AbstractTypeRule):
 
     def check(self):
-        type_string = self._parser.type
-
-        if type_string is None:
-            return True
-
-        return Ensure.is_empty(type_string)
+        return RuleChecker.is_valid_empty(self.get_rule_input())
 
     def execute(self) -> (bool, str, int):
         result = self.check()
-        result = not result if self.negated(self._when) else result
-        message = 'type {} be empty'.format('may not' if self.negated(self._when) else 'must')
+        result = not result if RuleChecker.is_negated(self._when) else result
+        message = 'type {} be empty'.format('may not' if RuleChecker.is_negated(self._when) else 'must')
 
         return result, message, self._level

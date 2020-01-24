@@ -1,20 +1,15 @@
-from ..ensure import Ensure
-from .abstract_rule import AbstractRule
+from ..rule_checker import RuleChecker
+from .abstract_rules import AbstractSubjectRule
 
 
-class SubjectFullStop(AbstractRule):
+class SubjectFullStop(AbstractSubjectRule):
 
     def check(self):
-        subject = self._parser.subject
-
-        if subject is None or not isinstance(self._value, str):
-            return False
-
-        return Ensure.is_last_character(subject, self._value)
+        return RuleChecker.is_valid_full_stop(self.get_rule_input(), self._value)
 
     def execute(self) -> (bool, str, int):
         result = self.check()
-        result = not result if self.negated(self._when) else result
-        message = 'subject {} end with full stop'.format('may not' if self.negated(self._when) else 'must')
+        result = not result if RuleChecker.is_negated(self._when) else result
+        message = 'subject {} end with full stop'.format('may not' if RuleChecker.is_negated(self._when) else 'must')
 
         return result, message, self._level
