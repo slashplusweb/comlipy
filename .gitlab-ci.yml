@@ -1,0 +1,10 @@
+stages:
+  - test
+
+pytest:
+  image: python:3.7
+  stage: test
+  script:
+    - pip install pipenv
+    - pipenv install --system --dev
+    - python -m unittest comlipy.tests.suite
