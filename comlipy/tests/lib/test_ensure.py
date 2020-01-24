@@ -1,8 +1,8 @@
 import unittest
-from ..lib.ensure import Ensure
+from comlipy.lib.ensure import Ensure
 
 
-class EnsureTest(unittest.TestCase):
+class TestEnsure(unittest.TestCase):
 
     def setUp(self):
         self.ensure = Ensure()
@@ -50,8 +50,6 @@ class EnsureTest(unittest.TestCase):
         self.str_string8 = '\t'
         self.str_string9 = '012345678\n'
         self.str_string10 = '0123456789\n0123456789\n0123456789101112\n0123456789\n'
-
-
 
     def run_case_test(self):
         self.test_is_case_camel_case()
