@@ -95,6 +95,7 @@ For example:
 
 ```bash
 python -m unittest comlipy.tests.lib.test_ensure
+python -m unittest comlipy.tests.lib.test_rule_checker
 ```
 
 ### Credits
