@@ -47,7 +47,7 @@ class Ensure:
 
     @staticmethod
     def line_length_max(input_string: str, line_length_max: int) -> bool:
-        return all(Ensure.length_max(line, line_length_max) for line in split(r'/\r?\n', input_string))
+        return all(Ensure.length_max(line, line_length_max) for line in split(r'\r?\n', input_string))
 
     @staticmethod
     def leading_blank_line(input_string: str) -> bool:
