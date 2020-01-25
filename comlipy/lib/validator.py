@@ -45,7 +45,7 @@ class Validator:
 
         return self._rule_keys
 
-    def __get_rule_class(selfs, rule: str):
+    def __get_rule_class(self, rule: str):
         rule_module_name = rule.replace('-', '_')
         rule_class_name = ''.join(part.capitalize() for part in rule.split('-'))
         rule_module = import_module('.{}'.format(rule_module_name), '{}.rules'.format(__package__))
