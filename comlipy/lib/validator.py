@@ -1,8 +1,9 @@
 from importlib import import_module
+
 from .config import Config
-from .parser import Parser
 from .ensure import Ensure
 from .messages import Messages
+from .parser import Parser
 
 
 class Validator:
