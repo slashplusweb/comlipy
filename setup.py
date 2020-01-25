@@ -1,6 +1,7 @@
-from setuptools import find_packages, setup
-from os import path
 import re
+from os import path
+
+from setuptools import find_packages, setup
 
 _ABSOLUTE_DOC_LINK = re.compile('\[(?P<text>[^\]]+)\]\((?P<link>docs/[^\)]+)\)')
 
