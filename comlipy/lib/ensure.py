@@ -1,5 +1,4 @@
-from re import compile, split
-
+import re
 
 class Ensure:
     TARGET_CASE_TYPES = (
@@ -13,21 +12,21 @@ class Ensure:
     def is_case(input_string: str, target_case: str) -> bool:
 
         if target_case == 'camel-case':
-            pattern = compile(r'^[^a-z]|[A-Z]{2}|[^a-zA-Z]')
+            pattern = re.compile(r'^[^a-z]|[A-Z]{2}|[^a-zA-Z]')
         elif target_case == 'pascal-case':
-            pattern = compile(r'^[^A-Z]|[A-Z]{2}|[^a-zA-Z]')
+            pattern = re.compile(r'^[^A-Z]|[A-Z]{2}|[^a-zA-Z]')
         elif target_case == 'kebab-case':
-            pattern = compile(r'[^a-z|^-]')
+            pattern = re.compile(r'[^a-z|^-]')
         elif target_case == 'snake-case':
-            pattern = compile(r'[^a-z|^_]')
+            pattern = re.compile(r'[^a-z|^_]')
         elif target_case == 'start-case':
-            pattern = compile('^[^A-Z]|\s[^A-Z]')
+            pattern = re.compile(r'^[^A-Z]|\s[^A-Z]')
         elif target_case in ('sentence-case', 'sentencecase'):
-            pattern = compile(r'^[^A-Z]')
+            pattern = re.compile(r'^[^A-Z]')
         elif target_case in ('upper-case', 'uppercase'):
-            pattern = compile(r'[a-z]')
+            pattern = re.compile(r'[a-z]')
         elif target_case in ('lower-case', 'lowercase', 'lowerCase'):
-            pattern = compile(r'[A-Z]')
+            pattern = re.compile(r'[A-Z]')
         else:
             raise TypeError('ensure-case: Unknown target case `{}`'.format(target_case))
 
@@ -47,7 +46,7 @@ class Ensure:
 
     @staticmethod
     def line_length_max(input_string: str, line_length_max: int) -> bool:
-        return all(Ensure.length_max(line, line_length_max) for line in split(r'\r?\n', input_string))
+        return all(Ensure.length_max(line, line_length_max) for line in re.split(r'\r?\n', input_string))
 
     @staticmethod
     def leading_blank_line(input_string: str) -> bool:
@@ -63,8 +62,8 @@ class Ensure:
             return True
 
         # check for line breaks and if there is one, check if its empty
-        split_lines = input_string.splitlines(True)
-        return len(split_lines) > 0 and split_lines[0].isspace()
+        re.split_lines = input_string.re.splitlines(True)
+        return len(re.split_lines) > 0 and re.split_lines[0].isspace()
 
     @staticmethod
     def is_last_character(input_string: str, last_character) -> bool:
