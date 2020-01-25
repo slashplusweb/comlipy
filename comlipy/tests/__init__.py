@@ -1,9 +1,13 @@
 import unittest
 
 from .lib.test_ensure import TestEnsure
+from .lib.test_rule_checker import TestRuleChecker
 
 
 def suite():
-    test_suite = unittest.TestLoader().loadTestsFromTestCase(TestEnsure)
+    suites_list = []
+    loader = unittest.TestLoader()
+    suites_list.append(loader.loadTestsFromTestCase(TestEnsure))
+    suites_list.append(loader.loadTestsFromTestCase(TestRuleChecker))
 
-    return test_suite
+    return unittest.TestSuite(suites_list)
