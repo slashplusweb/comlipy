@@ -98,14 +98,17 @@ python -m unittest comlipy.tests.lib.test_ensure
 python -m unittest comlipy.tests.lib.test_rule_checker
 ```
 
+or run all tests in batch:
+```bash
+# optionally run it in verbose mode (-v)
+python -m unittest -v comlipy.tests.suite
+```
+
 ### Credits
 - [commitlint](https://github.com/conventional-changelog/commitlint)
 - [conventional commit standards](https://conventionalcommits.org)
 
-### Todos:
-
-#### Tests:
-- [ ] rules
+## Todos:
 
 ### Rules:
 - [ ] references-empty
