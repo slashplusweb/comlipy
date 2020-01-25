@@ -27,17 +27,11 @@ class AbstractRule(abc.ABC):
 
 class AbstractHeaderRule(AbstractRule, abc.ABC):
 
-    def __init__(self, parser: Parser, settings: list):
-        super().__init__(parser, settings)
-
     def get_rule_type(self):
         return 'header'
 
 
 class AbstractBodyRule(AbstractRule, abc.ABC):
-
-    def __init__(self, parser: Parser, settings: list):
-        super().__init__(parser, settings)
 
     def get_rule_type(self):
         return 'body'
@@ -45,17 +39,11 @@ class AbstractBodyRule(AbstractRule, abc.ABC):
 
 class AbstractFooterRule(AbstractRule, abc.ABC):
 
-    def __init__(self, parser: Parser, settings: list):
-        super().__init__(parser, settings)
-
     def get_rule_type(self):
         return 'footer'
 
 
 class AbstractScopeRule(AbstractRule, abc.ABC):
-
-    def __init__(self, parser: Parser, settings: list):
-        super().__init__(parser, settings)
 
     def get_rule_type(self):
         return 'scope'
@@ -63,17 +51,11 @@ class AbstractScopeRule(AbstractRule, abc.ABC):
 
 class AbstractTypeRule(AbstractRule, abc.ABC):
 
-    def __init__(self, parser: Parser, settings: list):
-        super().__init__(parser, settings)
-
     def get_rule_type(self):
         return 'type'
 
 
 class AbstractSubjectRule(AbstractRule, abc.ABC):
-
-    def __init__(self, parser: Parser, settings: list):
-        super().__init__(parser, settings)
 
     def get_rule_type(self):
         return 'subject'
