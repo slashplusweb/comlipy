@@ -1,6 +1,7 @@
-from setuptools import find_packages, setup
-from os import path
 import re
+from os import path
+
+from setuptools import find_packages, setup
 
 _ABSOLUTE_DOC_LINK = re.compile('\[(?P<text>[^\]]+)\]\((?P<link>docs/[^\)]+)\)')
 
@@ -39,10 +40,10 @@ setup(
     packages=find_packages(exclude=['tests*']),
     package_data={'': ['config-comlipy.yml']},
     include_package_data=True,
-    entry_points='''
+    entry_points="""
         [console_scripts]
         comlipy=comlipy.main:cli
-    ''',
+    """,
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Developers',

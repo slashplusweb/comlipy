@@ -1,8 +1,11 @@
+import sys
+
 import click
+
 from .lib.config import Config
+from .lib.messages import Messages
 from .lib.parser import Parser
 from .lib.validator import Validator
-from .lib.messages import Messages
 
 COMLIPY_VERSION = '1.0.0-rc'
 
@@ -29,6 +32,6 @@ def cli(message, config_file_path, is_quiet):
     if not is_quiet:
         messages.show()
     if validator.is_error():
-        exit(1)
+        sys.exit(1)
 
-    exit(0)
+    sys.exit(0)

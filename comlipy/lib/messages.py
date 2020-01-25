@@ -1,13 +1,13 @@
 from termcolor import colored
 
-from .parser import Parser
 from .config import Config
+from .parser import Parser
 
 
 class Messages:
     ICON_ERROR = '✖'
     ICON_WARNING = '⚠'
-    ICON_SUCCESS = u"\xE2\x9C\x93"  # check (UTF-8) todo: check icon
+    ICON_SUCCESS = '✓'
     ICON_HELP = 'ⓘ'
     ICON_INFO = 'ℹ'
     ICON_HOURGLASS = '⧗'
@@ -66,18 +66,17 @@ class Messages:
         print('\n{}    {}'.format(icon, summary))
 
     def __print(self, message, level):
-        icon = None
+        if level != 0:
+            icon = None
 
-        if level == 0:
-            return
-        elif level == 1:
-            icon = colored(self.ICON_WARNING, 'yellow')
-        elif level == 2:
-            icon = colored(self.ICON_ERROR, 'red')
-            message = colored(message, attrs=['bold'])
-        elif level == 3:
-            icon = colored(self.ICON_SUCCESS, 'green')
-        else:
-            TypeError('Unknown level `{}`'.format(level))
+            if level == 1:
+                icon = colored(self.ICON_WARNING, 'yellow')
+            elif level == 2:
+                icon = colored(self.ICON_ERROR, 'red')
+                message = colored(message, attrs=['bold'])
+            elif level == 3:
+                icon = colored(self.ICON_SUCCESS, 'green')
+            else:
+                TypeError('Unknown level `{}`'.format(level))
 
-        print('    '.join(filter(None, [icon, str(message)])))
+            print('    '.join(filter(None, [icon, str(message)])))
