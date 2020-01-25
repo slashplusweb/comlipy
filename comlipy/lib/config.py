@@ -1,4 +1,6 @@
 import os
+import sys
+
 import yaml
 
 
@@ -115,7 +117,7 @@ class Config:
                 return self.__load_file(self._custom_config_file_path)
             except FileNotFoundError:
                 print('Config file with filepath {} could not be found'.format(self._custom_config_file_path))
-                exit(1)
+                sys.exit(1)
 
         return None
 
@@ -123,5 +125,5 @@ class Config:
         """
         Load a yaml configuration file into a dict.
         """
-        with open(config_path) as f:
-            return yaml.load(f, Loader=yaml.FullLoader)
+        with open(config_path) as file:
+            return yaml.safe_load(file)
