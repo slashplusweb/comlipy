@@ -3,7 +3,7 @@ from os import path
 
 from setuptools import find_packages, setup
 
-_ABSOLUTE_DOC_LINK = re.compile('\[(?P<text>[^\]]+)\]\((?P<link>docs/[^\)]+)\)')
+_ABSOLUTE_DOC_LINK = re.compile(r'\[(?P<text>[^\]]+)\]\((?P<link>\/{0,1}docs\/[^\)]*)\)')
 
 
 def _absolute_docs_link_replacement(text):
@@ -23,7 +23,7 @@ with open(path.join(package_path, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='comlipy',
-    description='comlipy - git commit linting for python',
+    description='comlipy - git commit linting for python by slashplus',
     long_description=long_description,
     long_description_content_type='text/markdown',
     version='1.0.0-rc1',
