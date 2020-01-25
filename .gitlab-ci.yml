@@ -28,8 +28,8 @@ build:
   artifacts:
     paths:
       - dist/
-      expire_in: 1 days
-      when: always
+    expire_in: 1 days
+    when: always
   only:
     refs:
       - /^v[0-9]+(?:.[0-9]+)+(?:[-]rc[0-9]+)$/
