@@ -22,17 +22,14 @@ class Validator:
         :return: None
         '''
         for rule_key in self.__get_rule_keys():
-            # if rule_key == 'scope-case':
-                rule_module = self.__get_rule_class(rule_key)
-                rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
-                result, message, level = rule.execute()
-                if not result:
-                    self._messages.add_rule_result(message, level)
+            rule_module = self.__get_rule_class(rule_key)
+            rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
+            result, message, level = rule.execute()
+            if not result:
+                self._messages.add_rule_result(message, level)
 
-                    if int(level) == 2:
-                        self._is_error = True
-            # else:
-            #     continue
+                if int(level) == 2:
+                    self._is_error = True
 
     def is_error(self) -> bool:
         '''
@@ -54,11 +51,3 @@ class Validator:
         rule_module = import_module('.{}'.format(rule_module_name), '{}.rules'.format(__package__))
 
         return getattr(rule_module, rule_class_name)
-
-    # def __get_rule_types(self):
-    #     return list(set(map(self.__get_type_from_string, self.__get_rule_keys())))
-
-    # def __get_type_from_string(self, type_string):
-    #     dash_index = type_string.find('-')
-    #
-    #     return type_string[:dash_index] if dash_index != -1 else type_string
