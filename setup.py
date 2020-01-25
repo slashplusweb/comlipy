@@ -26,7 +26,7 @@ setup(
     description='comlipy - git commit linting for python',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    version='1.0.0-rc',
+    version='1.0.0-rc1',
     author='slashplus',
     author_email='info@slashplus.de',
     url='https://gitlab.com/slashplus-build/comlipy/',
