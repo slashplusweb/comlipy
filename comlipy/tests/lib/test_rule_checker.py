@@ -587,52 +587,52 @@ class TestRuleChecker(unittest.TestCase):
         self.assertTrue(RuleChecker.is_valid_empty(self.empty_str7), error_string.format(7))
 
     def test_is_valid_full_stop(self):
-        error_string = 'Incorrect is_valid_full_stop in self.leading_blank_str{}'
+        error_string = 'Incorrect is_valid_full_stop in self.full_stop_str{} compared with `{}`'
 
         fullstop = '.'
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3))
-        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3, fullstop))
+        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7, fullstop))
 
         fullstop = ''
-        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7, fullstop))
 
         fullstop = ' '
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6))
-        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4, fullstop))
+        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6, fullstop))
+        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7, fullstop))
 
         fullstop = 'ABC'
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7, fullstop))
 
         fullstop = '\n'
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2))
-        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6))
-        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str1, fullstop), error_string.format(1, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str2, fullstop), error_string.format(2, fullstop))
+        self.assertTrue(RuleChecker.is_valid_full_stop(self.full_stop_str3, fullstop), error_string.format(3, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str4, fullstop), error_string.format(4, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str5, fullstop), error_string.format(5, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str6, fullstop), error_string.format(6, fullstop))
+        self.assertFalse(RuleChecker.is_valid_full_stop(self.full_stop_str7, fullstop), error_string.format(7, fullstop))
 
     def test_is_valid_leading_blank(self):
         error_string = 'Incorrect is_valid_leading_blank in self.leading_blank_str{}'
