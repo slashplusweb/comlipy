@@ -22,7 +22,7 @@ build:
   dependencies:
     - unittest
   before_script:
-    - pip install --user --upgrade setuptools whee
+    - pip install --user --upgrade setuptools wheel
   script:
     - python setup.py sdist bdist_wheel
   only:
