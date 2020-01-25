@@ -1,10 +1,61 @@
+image: python:3.7
+
 stages:
   - test
+  - build
+  - deploy
+
+cache:
+  key: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+  paths:
+    - /.composer-cache/
 
 unittest:
-  image: python:3.7
   stage: test
   script:
     - pip install pipenv
     - pipenv install --system --dev
     - python -m unittest -v comlipy.tests.suite
+
+build:
+  stage: build
+  dependencies:
+    - unittest
+  before_script:
+    - pip install --upgrade setuptools wheel
+  script:
+    - python setup.py sdist bdist_wheel
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 days
+    when: always
+  only:
+    refs:
+      - /^v[0-9]+(?:.[0-9]+)+(?:[-]rc[0-9]+)$/
+      - /^v[0-9]+(?:.[0-9]+)+$/
+
+.deploy:
+  stage: deploy
+  dependencies:
+    - build
+  before_script:
+    - pip install --upgrade twine
+    - echo "$PYPIRC" > ~/.pypirc
+    - chmod 600 ~/.pypirc
+
+deploy:staging:
+  extends: .deploy
+  script:
+    - twine upload --repository testpypi dist/*
+  only:
+    refs:
+      - /^v[0-9]+(?:.[0-9]+)+(?:[-]rc[0-9]+)$/
+
+deploy:production:
+  extends: .deploy
+  script:
+    - twine upload --repository pypi dist/*
+  only:
+    refs:
+      - /^v[0-9]+(?:.[0-9]+)+$/
