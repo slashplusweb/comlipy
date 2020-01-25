@@ -6,9 +6,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-click = "*"
-termcolor = "*"
-pyyaml = ">=3.13"
+click = "==7.0"
+termcolor = "==1.1.0"
+pyyaml = "==5.3"
 comlipy = {editable = true,path = "."}
 
 [requires]
