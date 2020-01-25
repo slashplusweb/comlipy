@@ -7,7 +7,7 @@ from .parser import Parser
 class Messages:
     ICON_ERROR = '✖'
     ICON_WARNING = '⚠'
-    ICON_SUCCESS = u"\xE2\x9C\x93"  # check (UTF-8) todo: check icon
+    ICON_SUCCESS = '✓'
     ICON_HELP = 'ⓘ'
     ICON_INFO = 'ℹ'
     ICON_HOURGLASS = '⧗'
