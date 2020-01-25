@@ -22,9 +22,14 @@ build:
   dependencies:
     - unittest
   before_script:
-    - pip install --user --upgrade setuptools wheel
+    - pip install --upgrade setuptools wheel
   script:
     - python setup.py sdist bdist_wheel
+  artifacts:
+    paths:
+      - dist/
+      expire_in: 1 days
+      when: always
   only:
     refs:
       - /^v[0-9]+(?:.[0-9]+)+(?:[-]rc[0-9]+)$/
@@ -35,7 +40,7 @@ build:
   dependencies:
     - build
   before_script:
-    - pip install --user --upgrade twine
+    - pip install --upgrade twine
     - echo "$PYPIRC" > ~/.pypirc
     - chmod 600 ~/.pypirc
 
