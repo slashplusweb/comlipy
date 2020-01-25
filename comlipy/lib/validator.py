@@ -16,12 +16,12 @@ class Validator:
         self._is_error = False
 
     def validate(self) -> None:
-        '''
+        """
             Validate a list of rules one by one.
             Therefore import the rule module dynamically and run its execute method that expects the parser object.
             The module itself is responsible for validating the message and raising corresponding error messages.
         :return: None
-        '''
+        """
         for rule_key in self.__get_rule_keys():
             rule_module = self.__get_rule_class(rule_key)
             rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
@@ -33,11 +33,11 @@ class Validator:
                     self._is_error = True
 
     def is_error(self) -> bool:
-        '''
+        """
             Check if the rule validation has found an error.
             Default to False. The validation() method should be run before.
         :return: bool
-        '''
+        """
         return self._is_error
 
     def __get_rule_keys(self):

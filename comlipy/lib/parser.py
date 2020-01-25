@@ -62,10 +62,10 @@ class Parser:
         return None
 
     def __parse_subject(self):
-        '''
+        """
         try returning the string that occures after the colon
         or None if its an error or the index is out of bounds
-        '''
+        """
         header = self._header
 
         if self.__has_scope():

@@ -50,13 +50,13 @@ class Ensure:
 
     @staticmethod
     def leading_blank_line(input_string: str) -> bool:
-        '''
+        """
         Checks is the given input_string starts with an blank line.
         This is considered true if the string is completely empty, contains only whitespace,
         or if it starts with a line that follows those criteria
         :param input_string:
         :return:
-        '''
+        """
         # return true if the complete string is empty
         if len(input_string) == 0 or input_string.isspace():
             return True

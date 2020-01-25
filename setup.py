@@ -40,10 +40,10 @@ setup(
     packages=find_packages(exclude=['tests*']),
     package_data={'': ['config-comlipy.yml']},
     include_package_data=True,
-    entry_points='''
+    entry_points="""
         [console_scripts]
         comlipy=comlipy.main:cli
-    ''',
+    """,
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Developers',
