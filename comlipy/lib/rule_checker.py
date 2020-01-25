@@ -38,6 +38,8 @@ class RuleChecker:
 
     @staticmethod
     def is_valid_max_length(input_str: str, value):
+        # None is 'True', because the actual 'empty' rule is responsible for None handling, NOT the 'max-length' rule.
+        # This way we do not throw more than one message
         if input_str is None or not Ensure.is_int(value):
             return True
 
@@ -45,6 +47,8 @@ class RuleChecker:
 
     @staticmethod
     def is_valid_min_length(input_str: str, value):
+        # None is 'True', because the actual 'empty' rule is responsible for None handling, NOT the 'min-length' rule.
+        # This way we do not throw more than one message
         if input_str is None or not Ensure.is_int(value):
             return True
 
@@ -52,6 +56,8 @@ class RuleChecker:
 
     @staticmethod
     def is_valid_max_line_length(input_str: str, value):
+        # None is 'True', because the actual 'empty' rule is responsible for None handling, NOT the 'max-line-length'
+        # rule. This way we do not throw more than one message
         if input_str is None or not Ensure.is_int(value):
             return True
 
