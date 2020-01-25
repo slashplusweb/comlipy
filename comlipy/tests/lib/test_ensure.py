@@ -8,10 +8,6 @@ class TestEnsure(unittest.TestCase):
         self.set_up_case_test()
         self.set_up_str_test()
 
-    def runTest(self):
-        self.run_case_test()
-        self.run_str_test()
-
     def set_up_case_test(self):
         self.case_string1 = 'demo()1243: ademoString:sda'
         self.case_string2 = 'FooF BaR BaZ'
@@ -49,19 +45,6 @@ class TestEnsure(unittest.TestCase):
         self.str_string8 = '\t'
         self.str_string9 = '012345678\n'
         self.str_string10 = '0123456789\n0123456789\n0123456789101112\n0123456789\n'
-
-    def run_case_test(self):
-        self.test_is_case_camel_case()
-        self.test_is_case_kebab_case()
-        self.test_is_case_snake_case()
-        self.test_is_case_pascal_case()
-        self.test_is_case_start_case()
-        self.test_is_case_upper_case()
-        self.test_is_case_sentence_case()
-        self.test_is_case_lower_case()
-
-    def run_str_test(self):
-        pass
 
     def test_is_case_pascal_case(self):
         error_string = 'Incorrect pascal-case in self.case_string{}'

@@ -7,4 +7,4 @@ unittest:
   script:
     - pip install pipenv
     - pipenv install --system --dev
-    - python -m unittest comlipy.tests.suite
+    - python -m unittest -v comlipy.tests.suite
