@@ -1,7 +1,7 @@
 from termcolor import colored
 
-from .parser import Parser
 from .config import Config
+from .parser import Parser
 
 
 class Messages:
@@ -66,18 +66,17 @@ class Messages:
         print('\n{}    {}'.format(icon, summary))
 
     def __print(self, message, level):
-        icon = None
+        if level != 0:
+            icon = None
 
-        if level == 0:
-            return
-        elif level == 1:
-            icon = colored(self.ICON_WARNING, 'yellow')
-        elif level == 2:
-            icon = colored(self.ICON_ERROR, 'red')
-            message = colored(message, attrs=['bold'])
-        elif level == 3:
-            icon = colored(self.ICON_SUCCESS, 'green')
-        else:
-            TypeError('Unknown level `{}`'.format(level))
+            if level == 1:
+                icon = colored(self.ICON_WARNING, 'yellow')
+            elif level == 2:
+                icon = colored(self.ICON_ERROR, 'red')
+                message = colored(message, attrs=['bold'])
+            elif level == 3:
+                icon = colored(self.ICON_SUCCESS, 'green')
+            else:
+                TypeError('Unknown level `{}`'.format(level))
 
-        print('    '.join(filter(None, [icon, str(message)])))
+            print('    '.join(filter(None, [icon, str(message)])))
