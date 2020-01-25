@@ -62,8 +62,8 @@ class Ensure:
             return True
 
         # check for line breaks and if there is one, check if its empty
-        re.split_lines = input_string.re.splitlines(True)
-        return len(re.split_lines) > 0 and re.split_lines[0].isspace()
+        split_lines = input_string.splitlines(True)
+        return len(split_lines) > 0 and split_lines[0].isspace()
 
     @staticmethod
     def is_last_character(input_string: str, last_character) -> bool:
