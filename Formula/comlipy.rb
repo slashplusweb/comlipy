@@ -1,9 +1,9 @@
 class Comlipy < Formula
   desc "comlipy - git commit linting for python by slashplus"
   homepage "https://gitlab.com/slashplus-build/comlipy/"
-  url "https://gitlab.com/slashplus-build/comlipy.git", :using => :git, :tag => 'v1.0.0-rc1'
+  url "https://gitlab.com/slashplus-build/comlipy.git", :using => :git, :tag => 'v1.0.0'
   head "https://gitlab.com/slashplus-build/comlipy.git", :using => :git
-  version "1.0.0-rc2"
+  version "1.0.0"
   depends_on "python"
 
   include Language::Python::Virtualenv
