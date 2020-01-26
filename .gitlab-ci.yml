@@ -47,7 +47,7 @@ build:
 deploy:staging:
   extends: .deploy
   script:
-    - twine upload --repository testpypi dist/*
+    - twine upload --repository comlipy-test dist/*
   only:
     refs:
       - /^v[0-9]+(?:.[0-9]+)+(?:[-]rc[0-9]+)$/
@@ -55,7 +55,7 @@ deploy:staging:
 deploy:production:
   extends: .deploy
   script:
-    - twine upload --repository pypi dist/*
+    - twine upload --repository comlipy dist/*
   only:
     refs:
       - /^v[0-9]+(?:.[0-9]+)+$/
