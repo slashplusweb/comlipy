@@ -15,12 +15,16 @@ class Messages:
         self._messages = {}
         self._parser = parser
         self._config = config
+        self._is_verbose = False
 
     def add_rule_result(self, message: str, level: int, rule: str):
         self._messages.setdefault(level, []).append({'message': message, 'rule': rule})
 
-    def show(self):
-        if self.__is_problem():
+    def show(self, is_verbose: bool = False):
+        if is_verbose:
+            self._is_verbose = True
+
+        if self.__is_problem() or self._is_verbose:
             self.print_info()
             self.print_rules()
             self.print_summary()
@@ -60,21 +64,31 @@ class Messages:
         errors = messages[2] if 2 in messages else []
 
         summary = Col.colorize('found {} problems, {} warnings'.format(len(errors), len(warnings)), attrs=['bold'])
+
+        if self._is_verbose:
+            hidden = messages[0] if 0 in messages else []
+            success = messages[3] if 3 in messages else []
+            summary += Col.colorize(', {} successes, {} hidden'.format(len(success), len(hidden)), attrs=['bold'])
+
         icon = Col.colorize(self.ICON_ERROR, 'red') if len(errors) > 0 else Col.colorize(self.ICON_WARNING, 'yellow')
 
         print('\n{}    {}'.format(icon, summary))
 
     def __print(self, message: str, level, rule: str):
-        if level != 0:
+        if level not in [0, 3] or self._is_verbose:
             icon = None
             rule = Col.colorize('[{}]'.format(rule), 'grey')
 
-            if level == 1:
+            if level == 0:
+                # only in verbose mode
+                icon = Col.colorize(self.ICON_INFO, 'white')
+            elif level == 1:
                 icon = Col.colorize(self.ICON_WARNING, 'yellow')
             elif level == 2:
                 icon = Col.colorize(self.ICON_ERROR, 'red')
                 message = Col.colorize(message, attrs=['bold'])
             elif level == 3:
+                # only in verbose mode
                 icon = Col.colorize(self.ICON_SUCCESS, 'green')
             else:
                 TypeError('Unknown level `{}`'.format(level))

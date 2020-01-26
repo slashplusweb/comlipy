@@ -25,12 +25,17 @@ class Validator:
         for rule_key in self.__get_rule_keys():
             rule_module = self.__get_rule_class(rule_key)
             rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
-            result, message, level = rule.execute()
-            if not result:
+            is_valid_result, message, level = rule.execute()
+            if not is_valid_result:
+                # level 0 (hidden), 1 (warning), 2 (error)
                 self._messages.add_rule_result(message, level, rule_key)
 
+                # level 2 (error)
                 if int(level) == 2:
                     self._is_error = True
+            else:
+                # level 3 (success)
+                self._messages.add_rule_result(message, 3, rule_key)
 
     def is_error(self) -> bool:
         """
