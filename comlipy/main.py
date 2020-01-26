@@ -33,6 +33,7 @@ def cli(message, config_file_path, is_quiet, is_verbose):
 
     if not is_quiet:
         messages.show(is_verbose)
+
     if validator.is_error():
         sys.exit(1)
 
