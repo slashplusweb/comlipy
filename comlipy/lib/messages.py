@@ -1,5 +1,4 @@
-from termcolor import colored
-
+from .color import Color as Col
 from .config import Config
 from .parser import Parser
 
@@ -17,8 +16,8 @@ class Messages:
         self._parser = parser
         self._config = config
 
-    def add_rule_result(self, message: str, level: int):
-        self._messages.setdefault(level, []).append(message)
+    def add_rule_result(self, message: str, level: int, rule: str):
+        self._messages.setdefault(level, []).append({'message': message, 'rule': rule})
 
     def show(self):
         if self.__is_problem():
@@ -35,8 +34,8 @@ class Messages:
         header = self._parser.header
 
         if header is not None:
-            icon = colored(self.ICON_INFO, 'grey')
-            header = colored(header, attrs=['bold'])
+            icon = Col.colorize(self.ICON_HOURGLASS, 'grey')
+            header = Col.colorize(header, attrs=['bold'])
             print('{}    input: {}'.format(icon, header))
 
     def print_help(self):
@@ -47,12 +46,12 @@ class Messages:
 
     def print_rules(self):
         for level, messages in self._messages.items():
-            for message in messages:
-                self.__print(message, level)
+            for message_dict in messages:
+                self.__print(message_dict['message'], level, message_dict['rule'])
 
     def print_rule_by_level(self, level):
-        for message in self._messages[level]:
-            self.__print(message, level)
+        for message_dict in self._messages[level]:
+            self.__print(message_dict['message'], level, message_dict['rule'])
 
     def print_summary(self):
 
@@ -60,23 +59,25 @@ class Messages:
         warnings = messages[1] if 1 in messages else []
         errors = messages[2] if 2 in messages else []
 
-        summary = colored('found {} problems, {} warnings'.format(len(errors), len(warnings)), attrs=['bold'])
-        icon = colored(self.ICON_ERROR, 'red') if len(errors) > 0 else colored(self.ICON_WARNING, 'yellow')
+        summary = Col.colorize('found {} problems, {} warnings'.format(len(errors), len(warnings)), attrs=['bold'])
+        icon = Col.colorize(self.ICON_ERROR, 'red') if len(errors) > 0 else Col.colorize(self.ICON_WARNING, 'yellow')
 
         print('\n{}    {}'.format(icon, summary))
 
-    def __print(self, message, level):
+    def __print(self, message: str, level, rule: str):
         if level != 0:
             icon = None
+            rule = Col.colorize('[{}]'.format(rule), 'grey')
 
             if level == 1:
-                icon = colored(self.ICON_WARNING, 'yellow')
+                icon = Col.colorize(self.ICON_WARNING, 'yellow')
             elif level == 2:
-                icon = colored(self.ICON_ERROR, 'red')
-                message = colored(message, attrs=['bold'])
+                icon = Col.colorize(self.ICON_ERROR, 'red')
+                message = Col.colorize(message, attrs=['bold'])
             elif level == 3:
-                icon = colored(self.ICON_SUCCESS, 'green')
+                icon = Col.colorize(self.ICON_SUCCESS, 'green')
             else:
                 TypeError('Unknown level `{}`'.format(level))
 
-            print('    '.join(filter(None, [icon, str(message)])))
+            full_str = ' '.join([str(message), rule])
+            print('    '.join(filter(None, [icon, str(full_str)])))
