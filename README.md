@@ -50,7 +50,10 @@ virtual environment using pipenv:
 ```bash
 git clone git@gitlab.com:slashplus-build/comlipy.git
 cd comlipy/
-pipenv install .
+pipenv install
+
+# OR optional: install the current version globally
+# pip3 install .
 ```
 
 Run comlipy:
