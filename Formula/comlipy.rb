@@ -3,7 +3,7 @@ class Comlipy < Formula
   homepage "https://gitlab.com/slashplus-build/comlipy/"
   url "https://gitlab.com/slashplus-build/comlipy.git", :using => :git, :tag => 'v1.0.0-rc1'
   head "https://gitlab.com/slashplus-build/comlipy.git", :using => :git
-  version "1.0.0-rc1"
+  version "1.0.0-rc2"
   depends_on "python"
 
   include Language::Python::Virtualenv
