@@ -1,4 +1,6 @@
-from .color import Color as Col
+from typing import List
+
+from .color import Color
 from .config import Config
 from .parser import Parser
 
@@ -15,11 +17,15 @@ class Messages:
         self._messages = {}
         self._parser = parser
         self._config = config
+        self._is_mono = False
 
     def add_rule_result(self, message: str, level: int, rule: str):
         self._messages.setdefault(level, []).append({'message': message, 'rule': rule})
 
-    def show(self):
+    def show(self, is_mono: bool = False):
+        if is_mono:
+            self._is_mono = True
+
         if self.__is_problem():
             self.print_info()
             self.print_rules()
@@ -34,8 +40,8 @@ class Messages:
         header = self._parser.header
 
         if header is not None:
-            icon = Col.colorize(self.ICON_HOURGLASS, 'grey')
-            header = Col.colorize(header, attrs=['bold'])
+            icon = self.__colored(self.ICON_HOURGLASS, 'grey')
+            header = self.__colored(header, attrs=['bold'])
             print('{}    input: {}'.format(icon, header))
 
     def print_help(self):
@@ -59,25 +65,31 @@ class Messages:
         warnings = messages[1] if 1 in messages else []
         errors = messages[2] if 2 in messages else []
 
-        summary = Col.colorize('found {} problems, {} warnings'.format(len(errors), len(warnings)), attrs=['bold'])
-        icon = Col.colorize(self.ICON_ERROR, 'red') if len(errors) > 0 else Col.colorize(self.ICON_WARNING, 'yellow')
+        summary = self.__colored('found {} problems, {} warnings'.format(len(errors), len(warnings)), attrs=['bold'])
+        icon = self.__colored(self.ICON_ERROR, 'red') if len(errors) > 0 else self.__colored(self.ICON_WARNING,
+                                                                                             'yellow')
 
         print('\n{}    {}'.format(icon, summary))
 
     def __print(self, message: str, level, rule: str):
         if level != 0:
             icon = None
-            rule = Col.colorize('[{}]'.format(rule), 'grey')
+            rule = self.__colored('[{}]'.format(rule), 'grey')
 
             if level == 1:
-                icon = Col.colorize(self.ICON_WARNING, 'yellow')
+                icon = self.__colored(self.ICON_WARNING, 'yellow')
             elif level == 2:
-                icon = Col.colorize(self.ICON_ERROR, 'red')
-                message = Col.colorize(message, attrs=['bold'])
+                icon = self.__colored(self.ICON_ERROR, 'red')
+                message = self.__colored(message, attrs=['bold'])
             elif level == 3:
-                icon = Col.colorize(self.ICON_SUCCESS, 'green')
+                icon = self.__colored(self.ICON_SUCCESS, 'green')
             else:
                 TypeError('Unknown level `{}`'.format(level))
 
             full_str = ' '.join([str(message), rule])
             print('    '.join(filter(None, [icon, str(full_str)])))
+
+    def __colored(self, text: str, color: str = None, attrs: List[str] = None):
+        if self._is_mono:
+            return text
+        return Color.colorize(text, color, attrs)
