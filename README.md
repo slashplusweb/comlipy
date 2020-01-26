@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img width="800" src="https://gitlab.com/slashplus-build/comlipy/blob/master/docs/assets/comlipy.svg">
+  <img width="800" src="https://gitlab.com/slashplus-build/comlipy/raw/master/docs/assets/comlipy.svg">
 </div>
 
 Demo generated with [svg-term-cli](https://github.com/marionebl/svg-term-cli) 
