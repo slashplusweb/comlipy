@@ -27,7 +27,7 @@ class Validator:
             rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
             result, message, level = rule.execute()
             if not result:
-                self._messages.add_rule_result(message, level)
+                self._messages.add_rule_result(message, level, rule_key)
 
                 if int(level) == 2:
                     self._is_error = True
