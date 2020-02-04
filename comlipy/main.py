@@ -12,11 +12,13 @@ COMLIPY_VERSION = '1.0.0'
 
 @click.command()
 @click.argument('message')
-@click.option('-c', '--config', 'config_file_path', default=None, help='path to the config file (.yml)')
+@click.option('-c', '--config', 'config_file_path', default=None, help='Path to the config file (.yml)')
 @click.option('-q', '--quiet', 'is_quiet', default=False, is_flag=True, help='Toggle console output')
 @click.option('-m', '--monochrome', 'is_mono', default=False, is_flag=True, help='Toggle monochrome output')
+@click.option('-v', '--verbose', 'is_verbose', default=False, is_flag=True,
+              help='Enable verbose output (also print hidden & success messages)')
 @click.version_option(version=COMLIPY_VERSION)
-def cli(message, config_file_path, is_quiet, is_mono):
+def cli(message, config_file_path, is_quiet, is_mono, is_verbose):
     # get the config
     config = Config(config_file_path)
 
@@ -31,7 +33,7 @@ def cli(message, config_file_path, is_quiet, is_mono):
     validator.validate()
 
     if not is_quiet:
-        messages.show(is_mono)
+        messages.show(is_mono, is_verbose)
     if validator.is_error():
         sys.exit(1)
 

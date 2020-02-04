@@ -18,15 +18,19 @@ class Messages:
         self._parser = parser
         self._config = config
         self._is_mono = False
+        self._is_verbose = False
 
     def add_rule_result(self, message: str, level: int, rule: str):
         self._messages.setdefault(level, []).append({'message': message, 'rule': rule})
 
-    def show(self, is_mono: bool = False):
+    def show(self, is_mono: bool = False, is_verbose: bool = False):
         if is_mono:
             self._is_mono = True
 
-        if self.__is_problem():
+        if is_verbose:
+            self._is_verbose = True
+
+        if self.__is_problem() or self._is_verbose:
             self.print_info()
             self.print_rules()
             self.print_summary()
@@ -66,22 +70,31 @@ class Messages:
         errors = messages[2] if 2 in messages else []
 
         summary = self.__colored('found {} problems, {} warnings'.format(len(errors), len(warnings)), attrs=['bold'])
+        if self._is_verbose:
+            hidden = messages[0] if 0 in messages else []
+            success = messages[3] if 3 in messages else []
+            summary += self.__colored(', {} successes, {} hidden'.format(len(success), len(hidden)), attrs=['bold'])
+
         icon = self.__colored(self.ICON_ERROR, 'red') if len(errors) > 0 else self.__colored(self.ICON_WARNING,
                                                                                              'yellow')
 
         print('\n{}    {}'.format(icon, summary))
 
     def __print(self, message: str, level, rule: str):
-        if level != 0:
+        if level not in [0, 3] or self._is_verbose:
             icon = None
             rule = self.__colored('[{}]'.format(rule), 'grey')
 
-            if level == 1:
+            if level == 0:
+                # only in verbose mode
+                icon = self.__colored(self.ICON_INFO, 'white')
+            elif level == 1:
                 icon = self.__colored(self.ICON_WARNING, 'yellow')
             elif level == 2:
                 icon = self.__colored(self.ICON_ERROR, 'red')
                 message = self.__colored(message, attrs=['bold'])
             elif level == 3:
+                # only in verbose mode
                 icon = self.__colored(self.ICON_SUCCESS, 'green')
             else:
                 TypeError('Unknown level `{}`'.format(level))
