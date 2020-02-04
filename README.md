@@ -26,7 +26,7 @@ but you can easily change the configuration in order to fit your needs.
 
 ## Installation
 
-### Installation with brew
+### Installation with brew (recommended)
 
 ```bash
 # Add the source
@@ -97,12 +97,12 @@ to change rule behaviour of all rules by providing values
 for `applicable`, `value`, `level` or you can change global settings
 i.e. the help message. 
 
-Therefore you must define a custom yml file with the rules to override 
+Therefore you must define a custom YAML file with the rules to override 
 and pass the custom config file path via parameter:
 
 If a config rule is not set, the default value will be used instead.
 
-Example config.yml
+Example `config-comlipy.yml
 
 ```yaml
 ## global definitions
