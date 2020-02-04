@@ -1,3 +1,16 @@
+## [1.1.0] - 2020-02-04
+### Added
+- Add monochrome output option
+- Add verbose output option
+
+### Fixed
+- Fix parsing of subject (see issue #1)
+
+### Changed
+- Change comlipy name (description)
+- Change comlipy example svg path
+- Change config-comlipy.yml defaults (remove useless configs)
+
 ## [1.0.0] - 2020-01-20
 - Initial release
 

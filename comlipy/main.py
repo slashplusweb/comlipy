@@ -7,7 +7,7 @@ from .lib.messages import Messages
 from .lib.parser import Parser
 from .lib.validator import Validator
 
-COMLIPY_VERSION = '1.0.0'
+COMLIPY_VERSION = '1.1.0'
 
 
 @click.command()

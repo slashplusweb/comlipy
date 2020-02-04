@@ -26,7 +26,7 @@ setup(
     description='comlipy by slashplus - lint commit messages with python',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    version='1.0.0',
+    version='1.1.0',
     author='slashplus',
     author_email='info@slashplus.de',
     url='https://gitlab.com/slashplus-build/comlipy/',
