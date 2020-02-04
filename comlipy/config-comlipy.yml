@@ -1,7 +1,5 @@
 global:
-  debug: 0
   help: 'Help: https://gitlab.com/slashplus-build/comlipy'
-  problem_counter: 1
 rules:
   body-case:
     applicable: 'always'

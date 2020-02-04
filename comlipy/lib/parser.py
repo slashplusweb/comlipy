@@ -70,7 +70,7 @@ class Parser:
 
         if self.__has_scope():
             _, close_brace_index = self.__get_scope_positions()
-            colon_index = close_brace_index + 2
+            colon_index = close_brace_index + 1
         else:
             colon_index = header.find(': ')
 
