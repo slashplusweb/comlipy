@@ -23,7 +23,7 @@ with open(path.join(package_path, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='comlipy',
-    description='comlipy - git commit linting for python by slashplus',
+    description='comlipy by slashplus - lint commit messages with python',
     long_description=long_description,
     long_description_content_type='text/markdown',
     version='1.0.0',

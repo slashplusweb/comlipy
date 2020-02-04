@@ -1,4 +1,4 @@
-# comlipy - git commit linting for python by slashplus
+# comlipy by slashplus - lint commit messages with python
 
 <div align="center">
 
