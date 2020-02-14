@@ -1,3 +1,11 @@
+## [1.1.2] - 2020-02-14
+### Added
+- Add default ignores
+- Add configuration setting in order to allow custom ignores
+
+### Fixed
+- Fix error when auto-merging and similar git commits (see issue #3)
+
 ## [1.1.1] - 2020-02-14
 ### Fixed
 - Fix header parsing error when parsing an empty message (see issue #2)
