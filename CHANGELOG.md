@@ -1,3 +1,7 @@
+## [1.1.1] - 2020-02-14
+### Fixed
+- Fix header parsing error when parsing an empty message (see issue #2)
+
 ## [1.1.0] - 2020-02-04
 ### Added
 - Add monochrome output option
