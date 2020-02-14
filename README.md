@@ -85,8 +85,10 @@ Documentation is currently not finished. Following a list of available
 references:
 
 - [docs](/docs): ALL documents 
-- [rules](/docs/reference-rules.md): Reference of all available rules with
+- [rules](/docs/reference-rules.md): Reference of all available validation rules with
  configuration values
+- [ignores](/docs/reference-ignores.md): Reference of default validation ignores and how 
+to add custom ignores 
 - [commit-msg sample hook](/docs/commit-msg.sample): Example git `commit-msg` hook
 - [cli](/docs/reference-cli.md): List of available cli flags
 
@@ -123,6 +125,8 @@ rules:
   scope-empty:
     applicable: 'never'
     level: 2
+ignores:
+    - '^SKIPME' #skip validations where header starts with "SKIPME"
 ```
 
 ## Tests
