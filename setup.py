@@ -3,7 +3,7 @@ from os import path
 
 from setuptools import find_packages, setup
 
-_ABSOLUTE_DOC_LINK = re.compile(r'\[(?P<text>[^\]]+)\]\((?P<link>\/{0,1}docs\/[^\)]*)\)')
+_ABSOLUTE_DOC_LINK = re.compile(r'\[(?P<text>[^\]]+)\]\(\/{0,1}(?P<link>docs\/[^\)]*)\)')
 
 
 def _absolute_docs_link_replacement(text):

@@ -84,7 +84,7 @@ See [docs](/docs/) for further details.
 Documentation is currently not finished. Following a list of available 
 references:
 
-- [docs](/docs): ALL documents 
+- [docs](/docs/): ALL documents 
 - [rules](/docs/reference-rules.md): Reference of all available validation rules with
  configuration values
 - [ignores](/docs/reference-ignores.md): Reference of default validation ignores and how 
