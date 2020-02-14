@@ -9,7 +9,7 @@ class Parser:
 
     def __format_message(self):
         split_list = self._message.splitlines()
-        header = split_list[0]
+        header = split_list[0] if len(split_list) > 0 else ""
         body = split_list[1] if len(split_list) > 1 else None
         footer = split_list[-1] if len(split_list) > 2 else None
 
