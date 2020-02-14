@@ -145,3 +145,11 @@ rules:
     applicable: 'always'
     value: 0
     level: 0
+ignores:
+    - '^((Merge pull request)|(Merge (.*?) into (.*?)|(Merge branch (.*?)))(?:\r?\n)*$)'
+    - '^(R|r)evert .*'
+    - '^(fixup|squash)!'
+    - '^Merged .*?(in|into) .*'
+    - '^Merge remote-tracking branch .*'
+    - '^Automatic merge.*'
+    - '^Auto-merged .*? into .*'
