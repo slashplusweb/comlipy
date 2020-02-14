@@ -1,4 +1,5 @@
 from importlib import import_module
+import re
 
 from .config import Config
 from .ensure import Ensure
@@ -22,6 +23,11 @@ class Validator:
             The module itself is responsible for validating the message and raising corresponding error messages.
         :return: None
         """
+
+        # skip validation if ignored pattern matches
+        if self.__is_ignored():
+            return
+
         for rule_key in self.__get_rule_keys():
             rule_module = self.__get_rule_class(rule_key)
             rule = rule_module(self._parser, self._config.get_rules_setting(rule_key))
@@ -57,3 +63,9 @@ class Validator:
         rule_module = import_module('.{}'.format(rule_module_name), '{}.rules'.format(__package__))
 
         return getattr(rule_module, rule_class_name)
+
+    def __is_ignored(self):
+        for ignore in self._config.get_setting('ignores'):
+            if isinstance(ignore, str) and re.match(ignore, self._parser.header):
+                return True
+        return False
