@@ -1,5 +1,6 @@
 import re
 
+
 class Ensure:
     TARGET_CASE_TYPES = (
         'camel-case', 'kebab-case', 'snake-case', 'pascal-case', 'start-case', 'upper-case', 'uppercase',
