@@ -1,7 +1,6 @@
 # comlipy by slashplus - lint commit messages with python
 
 <div align="center">
-
   <img width="800" src="https://gitlab.com/slashplus-build/comlipy/raw/master/docs/assets/comlipy.svg">
 </div>
 
@@ -63,19 +62,31 @@ pipenv shell
     
 ## Usage
 
-Make sure you have initialized `git` in your project. 
-
-Set up a commit-msg hook that checks the commit message before the 
+### Setting up a git commit-msg hook (optional)
+Comlipy comes with a simple git commit-msg hook installer. 
+This sets up a commit-msg hook that checks the commit message before the 
 actual commit. <br>
 An example `commit-msg` hook can be found [here](/docs/commit-msg.sample) 
 
-Tip:
-<br>
-It is recommended to set up a custom git hooks path, instead of 
+Make sure you have initialized `git` in your project. 
+And then just run `comlipy-install`, or  `comlipy-install -c 'PATH/TO/CUSTOM/CONFIGFILE.yml'` 
+if you want to set a default config override.
+
+**Note:** <br>
+Don't worry, the installer will _not_ automatically override an existing commit-msg hook. 
+In case such file already exists, wou will be asked if you want to override it.
+
+**Tip:**<br>
+Sometimes it can be useful to to set up a custom git hooks path, instead of 
 overriding the commit-msg hook directly. <br>
 Learn more about it [here](https://git-scm.com/docs/githooks).
-    
-\[Optional:\] Configure `comlipy` by setting up a custom configuration yml file
+
+### Setting up a a custom configuration override (optional)
+
+Its on you to configure `comlipy` so it perfectly fits your needs 
+by setting up and passing a custom configuration yml file. By doing this, you can
+override the default configuration i.e. enable or disable rules or changing the
+message behaviour (none, warning, error). 
 
 See [docs](/docs/) for further details.
 

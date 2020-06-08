@@ -14,3 +14,14 @@ Options:
   --version          Show the version and exit.
   --help             Show this message and exit.
 ```
+
+```bash
+$ comlipy-install --help
+
+Usage: comlipy-install [OPTIONS]
+
+Options:
+  -c, --config TEXT  Path to the config file (.yml)
+  --version          Show the version and exit.
+  --help             Show this message and exit.
+```
