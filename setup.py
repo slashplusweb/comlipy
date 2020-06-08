@@ -16,7 +16,7 @@ def _absolute_docs_link_replacement(text):
     return _ABSOLUTE_DOC_LINK.sub(_replacement, text)
 
 
-# read the contents of the README file
+# read the contents of the README.md file
 package_path = path.abspath(path.dirname(__file__))
 with open(path.join(package_path, 'README.md'), encoding='utf-8') as f:
     long_description = _absolute_docs_link_replacement(f.read())
@@ -37,12 +37,14 @@ setup(
     license='MIT',
     py_modules=['comlipy'],
     packages=find_packages(exclude=['tests*']),
-    package_data={'': ['config-comlipy.yml']},
+    package_data={'': ['config-comlipy.yml', 'commit-msg-hook.jinja2']},
     include_package_data=True,
-    entry_points="""
-        [console_scripts]
-        comlipy=comlipy.main:cli
-    """,
+    entry_points={
+        'console_scripts': [
+            'comlipy=comlipy.main:cli',
+            'comlipy-install=comlipy.main:install'
+        ]
+    },
     classifiers=[
         'Environment :: Console',
         'Intended Audience :: Developers',
