@@ -1,4 +1,4 @@
-from .ensure import Ensure
+from comlipy.lib.ensure import Ensure
 
 
 class RuleChecker:

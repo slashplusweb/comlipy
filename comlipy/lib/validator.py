@@ -1,10 +1,10 @@
 from importlib import import_module
 import re
 
-from .config import Config
-from .ensure import Ensure
-from .messages import Messages
-from .parser import Parser
+from comlipy.lib.config import Config
+from comlipy.lib.ensure import Ensure
+from comlipy.lib.messages import Messages
+from comlipy.lib.parser import Parser
 
 
 class Validator:

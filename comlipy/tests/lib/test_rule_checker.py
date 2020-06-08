@@ -1,6 +1,6 @@
 import unittest
 
-from ...lib.rule_checker import RuleChecker
+from comlipy.lib.rule_checker import RuleChecker
 
 
 class TestRuleChecker(unittest.TestCase):

@@ -2,10 +2,10 @@ import sys
 
 import click
 
-from .lib.config import Config
-from .lib.messages import Messages
-from .lib.parser import Parser
-from .lib.validator import Validator
+from comlipy.lib.config import Config
+from comlipy.lib.messages import Messages
+from comlipy.lib.parser import Parser
+from comlipy.lib.validator import Validator
 
 COMLIPY_VERSION = '1.1.2'
 

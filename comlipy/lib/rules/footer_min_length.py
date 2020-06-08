@@ -1,5 +1,5 @@
-from ..rule_checker import RuleChecker
-from .abstract_rules import AbstractFooterRule
+from comlipy.lib.rule_checker import RuleChecker
+from comlipy.lib.rules.abstract_rules import AbstractFooterRule
 
 
 class FooterMinLength(AbstractFooterRule):

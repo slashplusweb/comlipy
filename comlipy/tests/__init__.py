@@ -1,7 +1,7 @@
 import unittest
 
-from .lib.test_ensure import TestEnsure
-from .lib.test_rule_checker import TestRuleChecker
+from comlipy.tests.lib.test_ensure import TestEnsure
+from comlipy.tests.lib.test_rule_checker import TestRuleChecker
 
 
 def suite():

@@ -1,5 +1,5 @@
-from ..rule_checker import RuleChecker
-from .abstract_rules import AbstractScopeRule
+from comlipy.lib.rule_checker import RuleChecker
+from comlipy.lib.rules.abstract_rules import AbstractScopeRule
 
 
 class ScopeEnum(AbstractScopeRule):

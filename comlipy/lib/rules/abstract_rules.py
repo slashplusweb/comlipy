@@ -1,6 +1,6 @@
 import abc
 
-from ..parser import Parser
+from comlipy.lib.parser import Parser
 
 
 class AbstractRule(abc.ABC):
