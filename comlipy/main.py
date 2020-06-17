@@ -6,6 +6,7 @@ from comlipy.lib.config import Config
 from comlipy.lib.messages import Messages
 from comlipy.lib.parser import Parser
 from comlipy.lib.validator import Validator
+from comlipy.lib.install import *
 
 COMLIPY_VERSION = '1.1.2'
 
@@ -38,3 +39,20 @@ def cli(message, config_file_path, is_quiet, is_mono, is_verbose):
         sys.exit(1)
 
     sys.exit(0)
+
+@click.command()
+@click.option('-c', '--config', 'config_file_path', default=None, help='Path to the config file (.yml)')
+@click.version_option(version=COMLIPY_VERSION)
+def install(config_file_path):
+    run_path = os.getcwd()
+    git_path = detect_git_path(run_path)
+
+    if not git_path:
+        Color.print('Git path not found: {!r}'.format(run_path))
+        sys.exit(1)
+    render_commit_hook(git_path, config_file_path)
+
+
+
+if __name__ == '__main__':
+    cli()

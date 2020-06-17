@@ -25,7 +25,7 @@ class Config:
 
         return self._default_config
 
-    def get_setting(self, key: str):
+    def get_setting(self, key: str) -> str:
         """
         Get a specific configuration setting by splitting the `key` taking `_` as delimiter character.
 
@@ -79,7 +79,7 @@ class Config:
         new dict.
 
         Args:
-            dict_default (dict) onto which the merge is executed
+            dict_default (dict): onto which the merge is executed
             dict_merge (dict): dct merged into dct
             add_keys (bool): whether to add new keys
 
