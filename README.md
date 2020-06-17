@@ -54,6 +54,7 @@ poetry install # install dependencies
 ```
 
 Run comlipy:
+
 ```bash
 poetry shell # open the virtual environment
 
