@@ -20,8 +20,9 @@ but you can easily change the configuration in order to fit your needs.
 
 ## Requirements
 
-- python 3.7
-- pip (pip3) & pipenv
+- python 3.7+
+- pip (pip3) or brew
+- poetry
 
 ## Installation
 
@@ -44,20 +45,20 @@ pip3 install comlipy
 ### Development installation
 
 Install the repository by git cloning it and by setting up a 
-virtual environment using pipenv:
+virtual environment using poetry:
 
 ```bash
-git clone git@gitlab.com:slashplus-build/comlipy.git
-cd comlipy/
-pipenv install
-
-# OR optional: install the current version globally
-# pip3 install .
+git clone git@gitlab.com:slashplus-build/comlipy.git # clone repo
+cd comlipy/ # change to comlipy directory
+poetry install # install dependencies
 ```
 
 Run comlipy:
 ```bash
-pipenv shell
+poetry shell # open the virtual environment
+
+# or just run a single command
+# poetry run comlipy-install
 ```
     
 ## Usage
@@ -69,24 +70,26 @@ actual commit. <br>
 An example `commit-msg` hook can be found [here](/docs/commit-msg.sample) 
 
 Make sure you have initialized `git` in your project. 
-And then just run `comlipy-install`, or  `comlipy-install -c 'PATH/TO/CUSTOM/CONFIGFILE.yml'` 
+And then just run `comlipy-install`, or 
+`comlipy-install -c 'PATH/TO/CUSTOM/CONFIGFILE.yml'` 
 if you want to set a default config override.
 
 **Note:** <br>
-Don't worry, the installer will _not_ automatically override an existing commit-msg hook. 
-In case such file already exists, you will be asked if you want to override it.
+Don't worry, the installer will _not_ automatically override an 
+existing commit-msg hook. In case such file already exists, you will be 
+asked if you want to override it.
 
 **Tip:**<br>
-Sometimes it can be useful to to set up a custom git hooks path, instead of 
-overriding the commit-msg hook directly. <br>
+Sometimes it can be useful to to set up a custom git hooks path, instead 
+of overriding the commit-msg hook directly. <br>
 Learn more about it [here](https://git-scm.com/docs/githooks).
 
 ### Setting up a a custom configuration override (optional)
 
 Its on you to configure `comlipy` so it perfectly fits your needs 
-by setting up and passing a custom configuration yml file. By doing this, you can
-override the default configuration i.e. enable or disable rules or changing the
-message behaviour (none, warning, error). 
+by setting up and passing a custom configuration yml file. By doing this, 
+you can override the default configuration i.e. enable or disable rules 
+or changing the message behaviour (none, warning, error). 
 
 See [docs](/docs/) for further details.
 
@@ -96,11 +99,12 @@ Documentation is currently not finished. Following a list of available
 references:
 
 - [docs](/docs/): ALL documents 
-- [rules](/docs/reference-rules.md): Reference of all available validation rules with
- configuration values
-- [ignores](/docs/reference-ignores.md): Reference of default validation ignores and how 
-to add custom ignores 
-- [commit-msg sample hook](/docs/commit-msg.sample): Example git `commit-msg` hook
+- [rules](/docs/reference-rules.md): Reference of all available 
+validation rules with configuration values
+- [ignores](/docs/reference-ignores.md): Reference of default 
+validation ignores and how to add custom ignores 
+- [commit-msg sample hook](/docs/commit-msg.sample): Example git 
+`commit-msg` hook
 - [cli](/docs/reference-cli.md): List of available cli flags
 
 ## Configuration
