@@ -119,7 +119,7 @@ and pass the custom config file path via parameter:
 
 If a config rule is not set, the default value will be used instead.
 
-Example `config-comlipy.yml
+Example `config-comlipy.yml`
 
 ```yaml
 ## global definitions
