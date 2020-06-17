@@ -1,4 +1,5 @@
 import os
+import sys
 from typing import List
 
 
@@ -25,6 +26,21 @@ class Color:
     RESET = '\033[0m'
 
     @staticmethod
+    def color_supported() -> bool:
+        """
+        Check if color is supported by the systems terminal.
+
+        Returns:
+            bool: whether the running system's terminal supports color
+        """
+        supported_platform = sys.platform != 'win32' or 'ANSICON' in os.environ
+
+        # isatty is not always implemented
+        is_a_tty = hasattr(sys.stdout, 'isatty') and sys.stdout.isatty()
+
+        return supported_platform and is_a_tty and os.getenv('ANSI_COLORS_DISABLED') is None
+
+    @staticmethod
     def colorize(text: str, color: str = None, attrs: List[str] = None):
         """
         Colorize a string
@@ -39,7 +55,7 @@ class Color:
             colored('Foo Bar Error!', 'red', ['bold', 'underline'])
             colored('Foo Bar Success!', 'green')
         """
-        if os.getenv('ANSI_COLORS_DISABLED') is None:
+        if Color.color_supported():
             fmt_str = '\033[{0:d}m{1:s}'
             if color is not None:
                 text = fmt_str.format(Color.COLORS[color], text)
