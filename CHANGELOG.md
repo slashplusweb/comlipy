@@ -1,3 +1,20 @@
+## [1.2.0] - 2020-06-17
+### Added
+- Add comlipy-install to easily create commit-msg hook (see issue #5)
+- Add configuration setting in order to allow custom ignores
+- Add poetry (see issue #6)
+
+### Changed
+- Change default rule `subject-case` to always lower-case
+- Remove all Pipenv files (now poetry)
+
+### Fixed
+- Fix ansi color sequences in IDE commit errors (hide if color not supported) (see issue #4)
+- Fix minor typos & misc bugs 
+
+### Removed
+- Remove pipenv (replaced with poetry) (see issue #6)
+
 ## [1.1.2] - 2020-02-14
 ### Added
 - Add default ignores
