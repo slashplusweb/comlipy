@@ -1,4 +1,4 @@
-image: python:3.7
+image: python:3.8
 
 stages:
   - test
@@ -13,8 +13,8 @@ cache:
 unittest:
   stage: test
   script:
-    - pip install pipenv
-    - pipenv install --system --dev
+    - pip install poetry
+    - poetry install
     - python -m unittest -v comlipy.tests.suite
 
 build:
@@ -22,9 +22,11 @@ build:
   dependencies:
     - unittest
   before_script:
-    - pip install --upgrade setuptools wheel
+    - pip install poetry
   script:
-    - python setup.py sdist bdist_wheel
+    # use '|' as sed delimiter because our repository url ($CI_PROJECT_URL) contains '/'
+    - sed -i -E "s|\[([^]]*)\]\((/[^\)]*)\)|\[\1\]\(${CI_PROJECT_URL}/blob/master\2\)|g" README.md
+    - poetry build
   artifacts:
     paths:
       - dist/
