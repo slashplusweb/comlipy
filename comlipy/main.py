@@ -47,7 +47,7 @@ def install(config_file_path):
     run_path = os.getcwd()
     git_path = detect_git_path(run_path)
 
-    if git_path is None:
+    if not git_path:
         Color.print('Git path not found: {!r}'.format(run_path))
         sys.exit(1)
     render_commit_hook(git_path, config_file_path)
