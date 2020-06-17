@@ -11,7 +11,6 @@ class Ensure:
 
     @staticmethod
     def is_case(input_string: str, target_case: str) -> bool:
-
         if target_case == 'camel-case':
             pattern = re.compile(r'^[^a-z]|[A-Z]{2}|[^a-zA-Z]')
         elif target_case == 'pascal-case':
@@ -52,11 +51,15 @@ class Ensure:
     @staticmethod
     def leading_blank_line(input_string: str) -> bool:
         """
-        Checks is the given input_string starts with an blank line.
+        Check is the given input_string starts with an blank line.
         This is considered true if the string is completely empty, contains only whitespace,
         or if it starts with a line that follows those criteria
-        :param input_string:
-        :return:
+
+        Args:
+            input_string (str): the input string
+
+        Returns:
+            bool:
         """
         # return true if the complete string is empty
         if len(input_string) == 0 or input_string.isspace():
@@ -74,11 +77,11 @@ class Ensure:
         return input_string[-1] == last_character
 
     @staticmethod
-    def is_in_enum(input_string: str, enum: list):
+    def is_in_enum(input_string: str, enum: list) -> bool:
         return input_string in enum
 
     @staticmethod
-    def is_int(value):
+    def is_int(value) -> bool:
         # of course we could check whether the value is of instance int,
         # but we also want to check whether we could cast it to int or not
         try:

@@ -18,10 +18,9 @@ class Validator:
 
     def validate(self) -> None:
         """
-            Validate a list of rules one by one.
-            Therefore import the rule module dynamically and run its execute method that expects the parser object.
-            The module itself is responsible for validating the message and raising corresponding error messages.
-        :return: None
+        Validate a list of rules one by one.
+        Therefore import the rule module dynamically and run its execute method that expects the parser object.
+        The module itself is responsible for validating the message and raising corresponding error messages.
         """
 
         # skip validation if ignored pattern matches
@@ -45,9 +44,11 @@ class Validator:
 
     def is_error(self) -> bool:
         """
-            Check if the rule validation has found an error.
-            Default to False. The validation() method should be run before.
-        :return: bool
+        Check if the rule validation has found an error.
+        Default to False. The validation() method should be run before.
+
+        Returns:
+             bool: whether there is an error or not
         """
         return self._is_error
 
