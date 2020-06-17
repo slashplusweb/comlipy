@@ -24,6 +24,8 @@ build:
   before_script:
     - pip install poetry
   script:
+    # use '|' as sed delimiter because our repository url ($CI_PROJECT_URL) contains '/'
+    - sed -i -E "s|\[([^]]*)\]\((/[^\)]*)\)|\[\1\]\(${CI_PROJECT_URL}/blob/master\2\)|g" README.md
     - poetry build
   artifacts:
     paths:
