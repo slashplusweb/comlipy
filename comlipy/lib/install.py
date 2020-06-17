@@ -6,7 +6,7 @@ from comlipy.hook_template import commit_msg_template
 from comlipy.lib.color import Color
 
 
-def detect_git_path(path):
+def detect_git_path(path: str) -> str:
     """
     Detect the git path by iterative traversing the `path` up until
     either the project path has been found or there is no parent path
@@ -17,30 +17,31 @@ def detect_git_path(path):
     while not is_git_path(path):
         parent_path = os.path.dirname(path)
         if parent_path == path:
-            return None
+            return ''
         path = parent_path
 
     return os.path.realpath(os.path.join(path, '.git'))
 
 
-def is_git_path(path):
+def is_git_path(path: str) -> bool:
     """
     Check if the given `path` can be verified as git path by checking it against the `.git` directory
 
     Returns:
-        bool: `path` is the .git project path
+        bool: whether `path` is the .git project path
     """
     detection_path = os.path.join(path, '.git')
 
     return os.path.exists(detection_path) and os.path.isdir(detection_path)
 
 
-def render_commit_hook(git_path, config_file_path=None):
+def render_commit_hook(git_path: str, config_file_path: str = None):
     """
     Render the commit-msg hook from template in 'hook_template.py'
-    :param git_path:
-    :param config_file_path:
-    :return:
+
+    Args:
+        git_path(str):
+        config_file_path(str): config_file_path:
     """
     output_file = os.path.realpath(os.path.join(git_path, 'hooks', 'commit-msg'))
 
@@ -58,7 +59,7 @@ def render_commit_hook(git_path, config_file_path=None):
 
     try:
         with open(output_file, 'wb') as file:
-            config = '-c "{!s}"'.format(config_file_path) if config_file_path is not None else ''
+            config = '-c "{!s}"'.format(config_file_path) if config_file_path else ''
             file.write(commit_msg_template.format(config=config, ).encode())
             st = os.stat(output_file)
             os.chmod(output_file, st.st_mode | stat.S_IEXEC)
