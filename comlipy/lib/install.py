@@ -59,7 +59,7 @@ def render_commit_hook(git_path: str, config_file_path: str = None):
 
     try:
         with open(output_file, 'wb') as file:
-            config = '-c "{!s}"'.format(config_file_path) if config_file_path else ''
+            config = '-c "{!s}" '.format(config_file_path) if config_file_path else ''
             file.write(commit_msg_template.format(config=config, ).encode())
             st = os.stat(output_file)
             os.chmod(output_file, st.st_mode | stat.S_IEXEC)
