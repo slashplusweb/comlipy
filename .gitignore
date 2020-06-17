@@ -17,17 +17,3 @@
 /.idea
 # as a convention ignore all directories starting with "_" in the repository root
 /_*/*
-
-## Build files
-/build/Taskfile.local
-/build/config.local.yml
-/build/local.yml
-/build/ENV/
-/build/.venv/
-/build/node_modules/
-/build/docker-compose.override.yml
-
-## Default web files
-/web/ENV/
-/web/.venv/
-/web/node_modules/
