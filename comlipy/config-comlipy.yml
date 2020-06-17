@@ -90,12 +90,9 @@ rules:
 #    value:
 #    level: 0
   subject-case:
-    applicable: 'never'
+    applicable: 'always'
     value:
-      - 'sentence-case'
-      - 'start-case'
-      - 'pascal-case'
-      - 'upper-case'
+      - 'lower-case'
     level: 2
   subject-empty:
     applicable: 'never'
