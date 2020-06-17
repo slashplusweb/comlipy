@@ -74,7 +74,7 @@ if you want to set a default config override.
 
 **Note:** <br>
 Don't worry, the installer will _not_ automatically override an existing commit-msg hook. 
-In case such file already exists, wou will be asked if you want to override it.
+In case such file already exists, you will be asked if you want to override it.
 
 **Tip:**<br>
 Sometimes it can be useful to to set up a custom git hooks path, instead of 
