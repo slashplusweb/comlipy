@@ -22,9 +22,9 @@ build:
   dependencies:
     - unittest
   before_script:
-    - pip install --upgrade setuptools wheel
+    - pip install poetry
   script:
-    - python setup.py sdist bdist_wheel
+    - poetry build
   artifacts:
     paths:
       - dist/
