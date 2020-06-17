@@ -8,7 +8,7 @@ from comlipy.lib.parser import Parser
 from comlipy.lib.validator import Validator
 from comlipy.lib.install import *
 
-COMLIPY_VERSION = '1.1.2'
+COMLIPY_VERSION = '1.2.0'
 
 
 @click.command()
