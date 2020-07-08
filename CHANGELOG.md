@@ -1,3 +1,7 @@
+## [1.2.1] - 2020-07-08
+### Added
+- Fix brew Formula (see issue #8)
+
 ## [1.2.0] - 2020-06-17
 ### Added
 - Add comlipy-install to easily create commit-msg hook (see issue #5)
