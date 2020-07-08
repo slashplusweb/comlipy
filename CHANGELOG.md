@@ -1,5 +1,5 @@
 ## [1.2.1] - 2020-07-08
-### Added
+### Fixed
 - Fix brew Formula (see issue #8)
 
 ## [1.2.0] - 2020-06-17
