@@ -1,7 +1,8 @@
 class Comlipy < Formula
   desc "comlipy by slashplus - lint commit messages with python"
   homepage "https://gitlab.com/slashplus-build/comlipy/"
-  url "https://gitlab.com/slashplus-build/comlipy.git", :using => :git, :tag => 'v1.2.1'
+  url "https://files.pythonhosted.org/packages/fa/21/236be034d8498d264ba96ebc386dde29fbd2bedcb1d58277dbcc0d470e6c/comlipy-1.2.1.tar.gz"
+  sha256 "cc5253dd55f002f958cfab56dec7af714d42b8cfb0171a591157b1440c4d6878"
   head "https://gitlab.com/slashplus-build/comlipy.git", :using => :git
   version "1.2.1"
   depends_on "python"
